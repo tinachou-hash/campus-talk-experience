@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Campus Talk 親師溝通互動體驗</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@500;600;700&family=Figtree:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F6F4; --surface:#FFFFFF; --surface-2:#F6F9F7; --line:#E2E8E4; --line-2:#CBD5CF;
+  --ink:#1E2A24; --ink-2:#4B5A52; --muted:#7A8982;
+  --accent:#2A8E68; --accent-ink:#FFFFFF; --accent-soft:#E6F4EC; --accent-deep:#1F6C4F;
+  --dusk:#4E6A88; --dusk-soft:#EAF0F6; --dusk-deep:#3D5670;
+  --amber:#C98F3B; --amber-soft:#FBF1E0;
+  --brick:#B8442C; --brick-soft:#FBEDE7;
+  --ok:#22A06B; --warn:#E09A12;
+  --shadow:0 8px 28px rgba(30,42,36,.10);
+  --cream:#F2EEE4; --paper:#FBF8F1; --taupe:#54564C; --taupe-2:#8A8B7E; --hair:#D8D4C6;
+  --num:'Figtree','Noto Sans TC',sans-serif;
+  --serif:'Noto Serif TC','Songti TC','PMingLiU',serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;font-size:14px;line-height:1.6;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+body.at-home{background:var(--cream)}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 48px}
+h1,h2,h3,h4{margin:0;text-wrap:balance}
+button{font:inherit;cursor:pointer;letter-spacing:inherit}
+button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ========== HOME ========== */
+.home{min-height:calc(100vh - 60px);display:grid;grid-template-columns:minmax(280px,400px) minmax(300px,540px);gap:60px;align-items:center;justify-content:center;padding:24px 0}
+@media (max-width:860px){.home{grid-template-columns:minmax(0,440px);gap:28px;justify-items:center}}
+.poster{background:var(--paper);padding:24px 24px 0;box-shadow:0 30px 80px rgba(60,70,50,.14);width:100%}
+.poster .art{position:relative;aspect-ratio:3/4;overflow:hidden;background:#EEF3EC}
+.poster .art i{position:absolute;border-radius:50%;filter:blur(34px);opacity:.6}
+.poster .art .a1{width:120%;height:95%;left:-45%;bottom:-25%;background:radial-gradient(circle at 60% 40%,#9FD8BC,#5BB890 60%,#2A8E68 100%)}
+.poster .art .a2{width:80%;height:60%;left:5%;top:-10%;background:radial-gradient(circle,#F6D9A8,#EDA25E 60%,transparent 100%)}
+.poster .art .a3{width:85%;height:75%;right:-25%;top:5%;background:radial-gradient(circle at 40% 40%,#BBD1E8,#6E92C9 55%,transparent 100%)}
+.poster .art .a4{width:70%;height:50%;right:-15%;bottom:-5%;background:radial-gradient(circle,#F8F2E4,transparent 70%)}
+.poster .art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,0) 40%,rgba(251,248,241,.4));pointer-events:none}
+.poster .art svg{position:absolute;inset:0;width:100%;height:100%;z-index:2}
+.poster .cap{font-family:var(--serif);text-align:center;color:var(--taupe);padding:24px 8px 28px;font-size:clamp(20px,2.6vw,27px);line-height:1.35;font-weight:600}
+.poster .cap .rule{width:70%;height:1px;background:var(--hair);margin:10px auto}
+.poster .cap small{display:block;font-family:var(--num);font-size:11px;letter-spacing:.3em;color:var(--taupe-2);font-weight:600;margin-top:6px}
+.entry{color:var(--taupe);width:100%}
+.entry .eyebrow{display:flex;align-items:center;gap:8px;font-family:var(--num);font-size:12px;letter-spacing:.2em;color:var(--taupe-2);text-transform:uppercase;font-weight:600}
+.entry .eyebrow img{width:22px;height:22px}
+.entry h1{font-family:var(--serif);font-weight:700;font-size:clamp(28px,3.4vw,40px);line-height:1.25;margin:10px 0 14px;color:var(--taupe)}
+.entry p.lead{margin:0 0 26px;color:var(--taupe-2);font-size:15px;line-height:1.85;max-width:34em}
+.entry .hair{height:1px;background:var(--hair)}
+.role{display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:16px;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--hair);padding:18px 6px;color:var(--taupe);transition:background .15s}
+.role:hover{background:rgba(255,255,255,.4)}
+.role .no{font-family:var(--serif);font-size:22px;color:var(--taupe-2)}
+.role .t{font-family:var(--serif);font-size:19px;font-weight:600}
+.role .t small{display:block;font-family:"Noto Sans TC",sans-serif;font-size:13px;font-weight:400;color:var(--taupe-2);margin-top:3px}
+.role .arr{font-size:20px;color:var(--taupe-2);transition:transform .15s}
+.role:hover .arr{transform:translateX(4px);color:var(--taupe)}
+.role .done{font-size:11px;color:var(--accent);font-family:var(--num);font-weight:600;margin-left:8px}
+.entry .foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:22px;font-size:12px;color:var(--taupe-2);line-height:1.7}
+.linkbtn{background:none;border:1px solid var(--hair);color:var(--taupe-2);border-radius:999px;padding:6px 14px;font-size:12px}
+.linkbtn:hover{color:var(--taupe);border-color:var(--taupe-2)}
+
+/* ========== STAGE LAYOUT ========== */
+.stage{max-width:1180px;margin:0 auto}
+.topbar{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.topbar .step{font-family:var(--num);font-size:12px;letter-spacing:.18em;color:var(--muted);font-weight:600}
+.topbar h2{font-family:var(--serif);font-size:22px;font-weight:700}
+.topbar .sp{flex:1}
+.ghost{border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2);border-radius:999px;padding:7px 14px;font-size:12.5px}
+.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.split{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:28px;align-items:start}
+@media (max-width:920px){.split{grid-template-columns:1fr}}
+.split.wide{grid-template-columns:minmax(0,1fr) 300px}
+
+/* guide panel */
+.guide{position:sticky;top:16px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.guide .gh{padding:14px 16px 10px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.guide .gh b{font-size:14px}
+.guide .gh .who{margin-left:auto;font-size:12px;color:var(--muted)}
+.guide ol{list-style:none;margin:0;padding:8px 0}
+.guide li{display:grid;grid-template-columns:26px 1fr;gap:10px;padding:10px 16px;align-items:start;color:var(--muted);transition:background .2s}
+.guide li .n{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--line-2);display:grid;place-items:center;font-family:var(--num);font-size:12px;font-weight:700;color:var(--muted);background:var(--surface)}
+.guide li .t{font-size:13.5px;line-height:1.55}
+.guide li .t small{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+.guide li.cur{background:var(--accent-soft);color:var(--ink)}
+.guide li.cur .n{background:var(--accent);border-color:var(--accent);color:#fff;animation:pulse 1.6s infinite}
+.guide li.ok{color:var(--ink-2)}
+.guide li.ok .n{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.guide li.ok .n{font-size:0}.guide li.ok .n::before{content:"✓";font-size:12px}
+.guide .why{margin:4px 16px 14px;padding:11px 13px;border-radius:10px;background:var(--surface-2);font-size:12.5px;line-height:1.75;color:var(--ink-2);border-left:3px solid var(--accent)}
+.guide .why b{color:var(--ink);display:block;margin-bottom:2px;font-size:12.5px}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px var(--accent-soft)}50%{box-shadow:0 0 0 9px transparent}}
+.hot{position:relative;animation:pulse 1.6s infinite;border-color:var(--accent)!important}
+
+/* done bar */
+.donebar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px;padding:12px 16px;border-radius:12px;background:var(--accent-soft);border:1px solid #BFE4D0;color:var(--accent-deep);font-weight:700}
+.donebar .sp{flex:1}
+.btn{border:1px solid var(--line-2);background:var(--surface);color:var(--ink);border-radius:9px;padding:9px 16px;font-weight:600;font-size:13.5px}
+.btn.accent{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.accent:hover{background:var(--accent-deep)}
+.btn.sm{padding:6px 12px;font-size:12.5px}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+
+/* ========== PHONE FRAME ========== */
+.phonewrap{display:flex;justify-content:center;padding:6px 0 8px}
+.phone{width:380px;max-width:100%;background:var(--surface);border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);overflow:hidden;position:relative}
+.phone .status{display:flex;align-items:center;justify-content:space-between;padding:12px 22px 0;font-family:var(--num);font-size:12.5px;font-weight:700;color:var(--ink)}
+.phone .status .clock{letter-spacing:.02em}
+.phone .status .sig{display:flex;gap:4px;align-items:center;font-size:11px}
+.phone .status .sig i{display:inline-block;width:18px;height:9px;border:1.5px solid var(--ink);border-radius:3px;position:relative}
+.phone .status .sig i::after{content:"";position:absolute;left:1.5px;top:1.5px;bottom:1.5px;width:70%;background:var(--ink);border-radius:1px}
+.screen{display:none;flex-direction:column;min-height:640px;max-height:640px}
+.screen.on{display:flex}
+.appbar{display:flex;align-items:center;gap:10px;padding:12px 18px 10px}
+.appbar .ttl{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--accent-deep);flex:1}
+.appbar .sub{font-size:12px;color:var(--muted);margin-top:2px}
+.appbar img{width:24px;height:24px}
+.back{width:32px;height:32px;border-radius:50%;border:0;background:none;color:var(--ink-2);display:grid;place-items:center;margin-left:-6px}
+.back:hover{background:var(--accent-soft)}
+.body{flex:1;overflow-y:auto;min-height:0;padding:4px 16px 16px}
+.sect{font-size:11.5px;color:var(--muted);letter-spacing:.14em;margin:12px 2px 8px;display:flex;align-items:center;gap:8px}
+.sect::after{content:"";flex:1;height:1px;background:var(--line)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.row{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:13px 14px;background:none;border:0;border-bottom:1px solid var(--line);color:inherit;transition:background .12s}
+.row:last-child{border-bottom:0}
+.row:hover{background:var(--surface-2)}
+.row-main{flex:1;min-width:0}
+.row-name{font-size:14.5px;font-weight:500;display:flex;align-items:center;gap:6px}
+.row-meta{font-size:12.5px;color:var(--ink-2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tag{font-size:11px;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:1px 6px;font-weight:400}
+.avatar{width:40px;height:40px;border-radius:50%;flex:none;display:grid;place-items:center;color:#fff;font-size:14px;font-weight:500}
+.avatar.sm{width:34px;height:34px;font-size:12.5px}
+.av1{background:#3FAF88}.av2{background:#4FB3BE}.av3{background:#EDA25E}.av4{background:#6E92C9}
+.pill{font-size:11px;padding:3px 10px;border-radius:999px;white-space:nowrap;flex:none;font-weight:500}
+.pill.open{background:var(--accent-soft);color:var(--accent)}
+.pill.busy{background:var(--amber-soft);color:#9A6B17}
+.pill.off{background:var(--dusk-soft);color:var(--dusk)}
+.note{font-size:12px;color:var(--muted);line-height:1.75;padding:10px 4px 0}
+.meta-col{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none}
+.time{font-size:11.5px;color:var(--muted);font-family:var(--num)}
+.badge{min-width:19px;height:19px;padding:0 6px;border-radius:999px;background:#F08A3C;color:#fff;font-size:11px;font-family:var(--num);display:grid;place-items:center;font-weight:700}
+.stack{display:flex}
+.stack span{width:20px;height:20px;border-radius:50%;border:2px solid #fff;margin-left:-7px;font-size:10px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent-deep)}
+.stack span:first-child{margin-left:0}
+.chev{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:var(--muted);flex:none;border:1px solid transparent}
+.chev:hover{background:var(--accent-soft)}
+.chev svg{transition:transform .15s}
+.chev.open svg{transform:rotate(180deg)}
+.kids{display:none;background:var(--surface-2)}
+.kids.open{display:block}
+.kid{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:10px 14px 10px 46px;border:0;background:none;color:inherit}
+.kid:hover{background:var(--accent-soft)}
+.kid-av{width:30px;height:30px;border-radius:50%;flex:none;font-size:12px;display:grid;place-items:center;background:#D5F1E2;color:var(--accent-deep)}
+.kid-name{font-size:13.5px;font-weight:500}
+.kid-meta{font-size:11.5px;color:var(--ink-2)}
+.sos{display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 16px 16px;padding:13px;border-radius:12px;background:var(--brick-soft);color:var(--brick);font-size:14px;font-weight:600;border:1px solid transparent}
+.sos:hover{background:#F7E0D6}
+.sortrow{display:flex;gap:6px;margin:0 2px 10px}
+.chip{font-size:12.5px;padding:6px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2)}
+.chip.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-deep);font-weight:500}
+
+/* chat */
+.chathead{display:flex;align-items:center;gap:10px;padding:12px 14px 10px;border-bottom:1px solid var(--line)}
+.who{flex:1;min-width:0}
+.who-name{font-size:15.5px;font-weight:500}
+.who-sub{font-size:12px;color:var(--ink-2)}
+.scope-switch{display:flex;gap:6px;padding:10px 14px 0}
+.scope-switch button{flex:1;font-size:12.5px;padding:7px 10px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:999px}
+.scope-switch button.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.scope-bar{display:flex;align-items:center;gap:8px;padding:8px 14px;margin-top:8px;font-size:12px;background:var(--accent-soft);color:var(--accent-deep)}
+.scope-bar.solo{background:var(--dusk-soft);color:var(--dusk-deep)}
+.scope-bar i{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
+.thread{flex:1;overflow-y:auto;min-height:0;padding:14px 14px 8px;display:flex;flex-direction:column;gap:4px}
+.day{align-self:center;font-size:11.5px;color:var(--muted);background:var(--surface-2);border-radius:999px;padding:3px 12px;margin:6px 0;font-family:var(--num)}
+.brow{display:flex;align-items:flex-end;gap:6px;margin:3px 0}
+.brow.me{justify-content:flex-end}
+.bubble{max-width:78%;padding:9px 13px;border-radius:14px;font-size:14px;line-height:1.7;animation:in .25s ease}
+.brow.them .bubble{background:var(--surface-2);border:1px solid var(--line);border-bottom-left-radius:4px}
+.brow.me .bubble{background:var(--accent);color:#fff;border-bottom-right-radius:4px}
+.brow.me.parent .bubble{background:var(--dusk)}
+.bubble .who-lab{display:block;font-size:11px;color:var(--muted);margin-bottom:2px}
+.brow.me .bubble .who-lab{color:rgba(255,255,255,.8)}
+.btag{display:inline-flex;font-size:10.5px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent);margin-bottom:5px;letter-spacing:.06em}
+.brow.me .btag{background:rgba(255,255,255,.22);color:#fff}
+.btime{font-size:10.5px;color:var(--muted);font-family:var(--num);flex:none;padding-bottom:2px}
+.bread{font-size:10.5px;color:var(--accent);font-family:var(--num);flex:none;padding-bottom:2px}
+.rest{align-self:center;max-width:90%;background:var(--dusk-soft);border:1px solid #D6E1EC;border-radius:12px;padding:10px 14px;margin:8px 0;color:var(--dusk-deep);font-size:12.5px;line-height:1.75;display:flex;gap:9px;animation:in .3s ease}
+.rest svg{flex:none;margin-top:3px}
+.typing{display:flex;gap:4px;align-items:center;padding:4px 2px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);display:block;animation:blink 1s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.compose{display:flex;align-items:center;gap:8px;padding:10px 12px 14px;border-top:1px solid var(--line);background:var(--surface)}
+.compose input{flex:1;border:1px solid var(--line);border-radius:999px;padding:9px 14px;font:inherit;font-size:14px;background:var(--surface-2);color:var(--ink);min-width:0}
+.compose input:focus{outline:none;border-color:var(--accent);background:#fff}
+.send{width:38px;height:38px;border-radius:50%;border:1px solid transparent;background:var(--accent);color:#fff;display:grid;place-items:center;flex:none}
+.send.parent{background:var(--dusk)}
+.send:hover{filter:brightness(1.08)}
+.navbar{display:flex;border-top:1px solid var(--line);padding:8px 10px 12px;background:var(--surface)}
+.nav{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;color:var(--muted);padding:5px 0;border:1px solid transparent;background:none;border-radius:10px}
+.nav.active{color:var(--accent);font-weight:500}
+.nav:hover{color:var(--accent)}
+
+/* call */
+.call{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:28px 24px;text-align:center}
+.ring{width:84px;height:84px;border-radius:50%;background:var(--brick-soft);color:var(--brick);display:grid;place-items:center}
+.ring.ringing{animation:pulse-r 1.2s infinite}
+@keyframes pulse-r{0%,100%{box-shadow:0 0 0 0 rgba(184,68,44,.25)}50%{box-shadow:0 0 0 14px rgba(184,68,44,0)}}
+.call-name{font-family:var(--serif);font-size:20px;font-weight:600}
+.call-state{font-size:13px;color:var(--ink-2);min-height:22px}
+.call-log{width:100%;border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:8px;text-align:left}
+.log{display:flex;gap:9px;font-size:12px;color:var(--muted);line-height:1.6;opacity:0;transition:opacity .35s}
+.log.on{opacity:1}
+.log b{font-weight:600;color:var(--ink-2);flex:0 0 44px;font-family:var(--num)}
+.call-warn{width:100%;padding:9px 12px;border-radius:10px;background:var(--surface-2);font-size:11.5px;line-height:1.7;color:var(--ink-2);text-align:left}
+.hang{font-size:13.5px;padding:10px 26px;border-radius:999px;border:0;background:var(--ink);color:#fff}
+
+/* form bits */
+.field{margin-bottom:14px}
+.label{font-size:12.5px;color:var(--ink-2);margin-bottom:6px;display:block}
+.input,.textarea,.select{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 13px;font:inherit;font-size:14px;background:var(--surface);color:var(--ink);line-height:1.6}
+.textarea{resize:none;min-height:150px}
+.input:focus,.textarea:focus,.select:focus{outline:none;border-color:var(--accent)}
+.primary{width:100%;padding:12px;border-radius:12px;border:1px solid transparent;background:var(--accent);color:#fff;font-size:15px;font-weight:600}
+.primary:hover{background:var(--accent-deep)}
+.statband{display:flex;align-items:baseline;gap:8px;padding:16px 16px 4px}
+.statnum{font-family:var(--num);font-weight:700;font-size:40px;color:var(--accent);line-height:1}
+.stattot{font-family:var(--num);font-size:16px;color:var(--muted)}
+.statcap{font-size:13px;color:var(--ink-2);margin-left:auto}
+.progress{height:8px;border-radius:999px;background:var(--accent-soft);margin:8px 16px 14px;overflow:hidden}
+.progress span{display:block;height:100%;border-radius:999px;background:var(--accent);width:0;transition:width 1s ease}
+.unread-chip{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-2);border:1px solid var(--line);border-radius:999px;padding:5px 11px;background:var(--surface)}
+.unread-chip i{width:18px;height:18px;border-radius:50%;font-size:10px;color:#fff;display:grid;place-items:center;font-style:normal}
+.success{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 30px;text-align:center}
+.success .ico{width:68px;height:68px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;margin-bottom:16px;animation:pop .3s ease}
+@keyframes pop{from{transform:scale(.7);opacity:0}to{transform:none;opacity:1}}
+.success h3{font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:8px}
+.success p{font-size:13.5px;color:var(--ink-2);line-height:1.8;margin:0 0 24px}
+
+/* ========== BROWSER FRAME (stage 3) ========== */
+.frame{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.chrome{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid var(--line);background:var(--surface-2)}
+.chrome .dots i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--line-2);margin-right:5px}
+.chrome .url{flex:1;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:3px 10px;font-size:12px;color:var(--muted);font-family:var(--num);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.adminbar{display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid var(--line);font-weight:700}
+.adminbar img{width:22px;height:22px}
+.adminbar .ttl{font-family:var(--serif);color:var(--accent-deep);font-size:16px}
+.adminbar .who{margin-left:auto;font-size:12px;font-weight:500;color:var(--muted)}
+.admin{display:grid;grid-template-columns:200px 1fr;min-height:520px}
+@media (max-width:720px){.admin{grid-template-columns:1fr}}
+.side{border-right:1px solid var(--line);padding:14px 10px;background:var(--surface-2)}
+.side .sch{font-size:11.5px;color:var(--muted);padding:4px 10px 8px;letter-spacing:.1em}
+.side button{display:flex;align-items:center;gap:8px;width:100%;text-align:left;border:1px solid transparent;background:none;border-radius:9px;padding:9px 12px;color:var(--ink-2);font-size:13.5px}
+.side button:hover{background:var(--surface)}
+.side button.active{background:var(--surface);color:var(--accent-deep);font-weight:600;border-color:var(--line)}
+.pane{padding:20px 24px 24px}
+.pane h3{font-size:18px;font-weight:700;margin-bottom:4px}
+.pane .lead{font-size:13px;color:var(--muted);margin:0 0 18px}
+.frow{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.frow:last-of-type{border-bottom:0}
+.frow .k{font-size:13.5px;font-weight:500}
+.frow .k small{display:block;font-weight:400;color:var(--muted);font-size:12px;margin-top:2px}
+.frow .select,.frow .input{width:auto;min-width:200px;display:inline-block}
+.toggle{width:44px;height:26px;border-radius:999px;border:0;background:#D5DDD8;position:relative;transition:background .15s}
+.toggle::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:left .15s}
+.toggle.on{background:var(--accent)}.toggle.on::after{left:21px}
+.actions{display:flex;gap:10px;margin-top:18px;align-items:center;flex-wrap:wrap}
+.okline{font-size:13px;color:var(--accent-deep);font-weight:600}
+table.tbl{width:100%;border-collapse:separate;border-spacing:0;font-size:13px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+table.tbl th{text-align:left;font-weight:500;font-size:12px;color:var(--muted);background:var(--surface-2);padding:10px 12px;border-bottom:1px solid var(--line)}
+table.tbl td{padding:11px 12px;border-bottom:1px solid var(--line);color:var(--ink-2);vertical-align:top}
+table.tbl tr:last-child td{border-bottom:0}
+table.tbl td b{color:var(--ink);font-weight:600}
+table.tbl .empty{text-align:center;color:var(--muted);padding:28px}
+.tlpill{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent-deep);font-weight:600}
+.preview{margin-top:16px;padding:12px 14px;border-radius:10px;background:var(--dusk-soft);border:1px solid #D6E1EC;font-size:12.5px;color:var(--dusk-deep);line-height:1.75}
+.preview b{display:block;font-size:11.5px;letter-spacing:.1em;color:var(--dusk);margin-bottom:3px}
+
+/* ========== TOAST / MODAL ========== */
+.toasts{position:fixed;right:18px;bottom:18px;display:grid;gap:8px;z-index:50}
+.toast{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--ok);box-shadow:var(--shadow);border-radius:10px;padding:10px 14px;min-width:250px;max-width:330px;animation:in .25s ease}
+.toast.info{border-left-color:var(--dusk)}
+.toast b{display:block;font-size:13.5px}
+.toast span{color:var(--ink-2);font-size:12.5px;line-height:1.6}
+@keyframes in{from{transform:translateY(8px);opacity:0}to{transform:none;opacity:1}}
+.modal{position:fixed;inset:0;background:rgba(20,30,25,.5);display:grid;place-items:center;padding:16px;z-index:40}
+.modal .box{background:var(--surface);border-radius:14px;box-shadow:var(--shadow);width:min(480px,100%);padding:20px 22px;position:relative}
+.modal h3{font-size:16px;font-weight:700}
+.modal .sub{color:var(--muted);font-size:13px;margin:4px 0 12px}
+.leftlist{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.leftlist li{display:flex;gap:10px;align-items:flex-start;background:var(--accent-soft);border-radius:10px;padding:10px 12px}
+.leftlist .ln{width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px;flex:none;font-family:var(--num)}
+.leftlist b{font-size:13.5px}
+.leftlist .lsub{font-size:12px;color:var(--ink-2)}
+.modal .row2{display:flex;gap:10px;justify-content:flex-end;margin-top:14px}
+
+
+/* ===================== v3 ===================== */
+.stage{animation:stage-in .35s ease both}
+@keyframes stage-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.screen{height:640px;min-height:0;max-height:none}
+.screen.withnav{height:576px}
+.screen.on{animation:screen-in .26s ease both}
+@keyframes screen-in{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
+.donebar{animation:rise .4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.in{animation:rise .32s ease both}
+.guide li.ok .n{font-size:0;animation:check .35s cubic-bezier(.2,.9,.3,1.4) both}
+.guide li.ok .n::before{content:"✓";font-size:12px}
+@keyframes check{from{transform:scale(.6)}to{transform:scale(1)}}
+.guide li.cur .n{animation:none}
+.badge{animation:pop .3s ease both}
+.log.on{animation:rise .35s ease both}
+
+/* coach label: stays still, only the little arrow nudges */
+.coach{position:fixed;left:0;top:0;z-index:35;pointer-events:none;display:flex;flex-direction:column;align-items:center;opacity:0;transition:opacity .2s}
+.coach.show{opacity:1}
+.coach .lbl{background:var(--ink);color:#fff;font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:999px;white-space:nowrap;letter-spacing:.04em}
+.coach .arr{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:7px solid var(--ink);animation:nudge-y 1.4s ease-in-out infinite}
+.coach.c-below{flex-direction:column-reverse}
+.coach.c-below .arr{border-top:0;border-bottom:7px solid var(--ink);animation-name:nudge-yr}
+.coach.c-side{flex-direction:row}
+.coach.c-side .arr{border-left:7px solid var(--ink);border-right:0;border-top:6px solid transparent;border-bottom:6px solid transparent;animation-name:nudge-x}
+@keyframes nudge-y{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+@keyframes nudge-yr{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes nudge-x{0%,100%{transform:translateX(0)}50%{transform:translateX(3px)}}
+.hot{animation:ring 1.8s ease-out infinite!important}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(42,142,104,.38)}100%{box-shadow:0 0 0 10px rgba(42,142,104,0)}}
+
+.prog{display:inline-flex;align-items:center;gap:8px;font-family:var(--num);font-size:12px;color:var(--muted);font-weight:600}
+.prog .bar{width:110px;height:6px;border-radius:999px;background:var(--line);overflow:hidden}
+.prog .bar i{display:block;height:100%;background:var(--accent);border-radius:999px;width:0;transition:width .45s ease}
+.banner{display:flex;align-items:center;gap:10px;margin:0 0 14px;padding:10px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-size:13.5px;color:var(--ink-2);box-shadow:var(--shadow)}
+.banner b{color:var(--ink)}
+.banner .ic{width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;flex:none;font-family:var(--num);font-weight:700;font-size:12.5px}
+.banner.fin .ic{background:var(--accent-soft);color:var(--accent)}
+
+.quick{display:flex;gap:6px;padding:8px 12px 2px;overflow-x:auto;scrollbar-width:none;border-top:1px solid var(--line);background:var(--surface);align-items:center}
+.quick::-webkit-scrollbar{display:none}
+.quick .ql{font-size:11.5px;color:var(--muted);flex:none}
+.quick button{flex:none;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2)}
+.quick button:hover{border-color:var(--accent);color:var(--accent-deep);background:var(--accent-soft)}
+.compose{border-top:0}
+.shake{animation:shake .32s ease}
+@keyframes shake{0%,100%{transform:none}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.sysnote{align-self:center;text-align:center;max-width:88%;font-size:12px;color:var(--muted);background:var(--surface-2);padding:8px 12px;border-radius:10px;margin:8px 0;line-height:1.7}
+.kid .kid-av.g{background:var(--accent);color:#fff;font-size:11px}
+.kid .badge{margin-left:auto}
+.ro{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 13px;font-size:14px;background:var(--surface-2);color:var(--ink-2)}
+.castcard{display:block;width:100%;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:11px 13px;margin-bottom:8px}
+.castcard:hover{border-color:var(--accent)}
+.castcard .ct{font-size:13px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.castcard .cm{font-size:11.5px;color:var(--muted);margin-top:2px;font-family:var(--num)}
+.dayrow{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--line)}
+.dayrow:last-child{border-bottom:0}
+.dayrow .d{flex:1;font-size:14px;font-weight:500}
+.dayrow .d small{display:block;font-weight:400;font-size:11.5px;color:var(--muted)}
+.dayrow input{border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-family:var(--num);font-size:13px;background:var(--surface);color:var(--ink)}
+.dayrow input:focus{outline:none;border-color:var(--accent)}
+.policycard{background:var(--dusk-soft);border:1px solid #D6E1EC;border-radius:12px;padding:12px 14px;font-size:12.5px;color:var(--dusk-deep);line-height:1.75}
+.policycard b{display:block;font-size:13.5px;color:var(--ink);margin-bottom:2px}
+.remind{width:100%;margin-top:12px;padding:10px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2);font-size:13.5px;font-weight:500}
+.remind:hover:not([disabled]){border-color:var(--accent);color:var(--accent)}
+.remind[disabled]{opacity:.6;cursor:default}
+.tag01{display:inline-block;font-size:10.5px;font-family:var(--num);font-weight:700;letter-spacing:.06em;padding:1px 6px;border-radius:5px;background:var(--ink);color:#fff;margin-left:6px;vertical-align:1px}
+.tbl tr.new td{background:#F3FAF6}
+.emptybtn{margin-top:10px}
+.nav{cursor:pointer}
+table.tbl td{white-space:nowrap}
+table.tbl td:nth-child(2){white-space:normal}
+.tlpill{white-space:nowrap}
+
+.stage.duo{max-width:820px}
+.stage.duo .split{grid-template-columns:380px minmax(0,1fr);gap:36px}
+.stage.duo .phonewrap{display:block;padding:0}
+.stage .split.wide{grid-template-columns:minmax(0,1fr) 320px}
+.stage{max-width:1120px}
+.banner{display:none}
+.guide .gtip{font-size:11.5px;color:var(--muted);padding:8px 16px 0}
+.guide > ol{padding:6px 0 8px}
+.guide > ol > li{display:block;padding:0;background:none}
+.guide > ol > li.cur{background:var(--accent-soft)}
+.gstep{display:grid;grid-template-columns:26px 1fr 12px;gap:10px;width:100%;text-align:left;background:none;border:0;padding:10px 16px;color:inherit;align-items:start;border-radius:0}
+.gstep:hover{background:rgba(42,142,104,.06)}
+.gstep .gc{color:var(--muted);transition:transform .2s;align-self:center;font-size:16px}
+.guide > ol > li.open .gstep .gc{transform:rotate(90deg)}
+.guide > ol > li.cur .t{color:var(--ink);font-weight:500}
+.guide .how{list-style:none;margin:0;padding:0 16px 12px 52px;display:none}
+.guide > ol > li.open .how{display:block;animation:rise .25s ease both}
+.guide .how li{display:block;position:relative;padding:4px 0 4px 18px;font-size:12.5px;color:var(--muted);line-height:1.6;background:none}
+.guide .how li::before{content:"";position:absolute;left:1px;top:10px;width:8px;height:8px;border-radius:50%;border:1.5px solid var(--line-2);background:var(--surface);box-sizing:border-box}
+.guide .how li.done{color:var(--ink-2)}
+.guide .how li.done::before{background:var(--accent);border-color:var(--accent)}
+.guide .how li.now{color:var(--accent-deep);font-weight:600}
+.guide .how li.now::before{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.donebar{margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.donebar .dt{flex:1 1 260px;line-height:1.6}
+.donebar .db{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
+.toasts{transition:bottom .25s ease}
+body.no-side .banner{display:flex}
+.banner .bwrap{display:flex;flex-direction:column;gap:2px;min-width:0}
+.banner .bnote{font-size:12.5px;color:var(--accent-deep);max-height:0;overflow:hidden;opacity:0;transition:max-height .3s ease,opacity .3s ease}
+.banner .bnote.show{max-height:60px;opacity:1}.toast{cursor:pointer}
+.inhint{margin-left:auto;font-size:11px;font-weight:600;background:var(--ink);color:#fff;border-radius:999px;padding:2px 9px;white-space:nowrap;animation:fadein .25s ease both}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.side button{gap:8px}
+.admin{grid-template-columns:170px minmax(0,1fr)}
+.adminbar{flex-wrap:wrap;row-gap:4px}
+.frow{grid-template-columns:140px minmax(0,1fr)}
+.frow > div:last-child{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.preview b{display:block}
+.logcard{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;background:var(--surface)}
+.logcard.new{background:#F3FAF6;border-color:#BFE4D0}
+.lc-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.lc-top b{font-family:var(--num);font-size:14px}
+.lc-top .tag01{margin-left:0}
+.lc-top .tlpill{margin-left:auto}
+.lc-row{display:grid;grid-template-columns:44px 1fr;gap:8px;font-size:13px;color:var(--ink-2);line-height:1.7}
+.lc-row span{color:var(--muted);font-size:12px}
+.dayrow input[disabled]{opacity:.5;cursor:not-allowed}
+.frow .select{min-width:0;width:110px;display:inline-block}
+.coach.c-right{flex-direction:row-reverse}
+.coach.c-right .arr{border-right:7px solid var(--ink);border-left:0;border-top:6px solid transparent;border-bottom:6px solid transparent;animation-name:nudge-xr}
+@keyframes nudge-xr{0%,100%{transform:translateX(0)}50%{transform:translateX(-3px)}}
+@media (max-width:920px){.guide{display:none}.banner{display:flex}.topbar h2{font-size:19px}.split,.split.wide,.stage .split.wide,.stage.duo .split{grid-template-columns:minmax(0,1fr)}.stage.duo .phonewrap{display:flex;justify-content:center}}
+@media (max-width:760px){
+  .admin{grid-template-columns:minmax(0,1fr)}
+  .side{border-right:0;border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:10px;scrollbar-width:none}
+  .side .sch{display:none}
+  .side button{width:auto;flex:none;white-space:nowrap}
+  .adminbar .who{margin-left:0;width:100%}
+  .frow{grid-template-columns:minmax(0,1fr);gap:8px}
+  .pane{padding:16px}
+  .chrome .url{font-size:11px}
+  .topbar{gap:8px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body class="at-home">
+<div class="wrap">
+<!-- ================= STAGE 0 HOME ================= -->
+<section id="stage0" class="home">
+  <div class="poster">
+    <div class="art">
+      <i class="a1"></i><i class="a2"></i><i class="a3"></i><i class="a4"></i>
+      <svg viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g opacity=".95">
+          <rect x="52" y="118" width="150" height="74" rx="22" fill="#fff"/>
+          <path d="M72 192 L62 214 L92 192 Z" fill="#fff"/>
+          <rect x="74" y="140" width="92" height="8" rx="4" fill="#CFE6DA"/>
+          <rect x="74" y="158" width="60" height="8" rx="4" fill="#CFE6DA"/>
+        </g>
+        <g opacity=".95">
+          <rect x="108" y="222" width="150" height="74" rx="22" fill="#2A8E68"/>
+          <path d="M238 296 L248 318 L218 296 Z" fill="#2A8E68"/>
+          <rect x="128" y="244" width="92" height="8" rx="4" fill="#fff" opacity=".85"/>
+          <rect x="160" y="262" width="60" height="8" rx="4" fill="#fff" opacity=".85"/>
+        </g>
+        <g opacity=".9">
+          <rect x="70" y="60" width="86" height="30" rx="15" fill="#fff"/>
+          <circle cx="86" cy="75" r="6" fill="#4E6A88"/>
+          <rect x="98" y="71" width="46" height="8" rx="4" fill="#D6E1EC"/>
+        </g>
+        <g opacity=".9">
+          <rect x="150" y="328" width="110" height="30" rx="15" fill="#fff"/>
+          <circle cx="166" cy="343" r="6" fill="#EDA25E"/>
+          <rect x="178" y="339" width="70" height="8" rx="4" fill="#F4E5CF"/>
+        </g>
+      </svg>
+    </div>
+    <div class="cap">
+      親師溝通，<br>回到校園
+      <div class="rule"></div>
+      <small>1CAMPUS · CAMPUS TALK</small>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="eyebrow"><img src="data:image/png;base64,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" alt=""> 1Campus 應用中心 · 體驗版</div>
+    <h1>Campus Talk<br>親師溝通互動體驗</h1>
+    <p class="lead">家長在晚上傳訊息、導師隔天早上處理、學校在後台訂下大家共同遵守的服務時間。請選一個身分，實際操作看看——每一步旁邊都有提示，不會迷路。</p>
+    <div class="hair"></div>
+    <button class="role" data-go="1" id="role1">
+      <span class="no">01</span>
+      <span class="t">家長<span class="done" id="done1" hidden>已完成</span><small>晚上傳訊息給導師、試一次緊急通話</small></span>
+      <span class="arr">→</span>
+    </button>
+    <button class="role" data-go="2" id="role2">
+      <span class="no">02</span>
+      <span class="t">導師<span class="done" id="done2" hidden>已完成</span><small>隔天早上回覆家長、群發班級通知</small></span>
+      <span class="arr">→</span>
+    </button>
+    <button class="role" data-go="3" id="role3">
+      <span class="no">03</span>
+      <span class="t">學校<span class="done" id="done3" hidden>已完成</span><small>訂定服務時間政策、指定緊急通話值班窗口</small></span>
+      <span class="arr">→</span>
+    </button>
+    <div class="foot">
+      <span>三個身分共用同一組示範資料，前一步做的事會帶到下一步。<br>人名、班級皆為虛構。</span>
+      <button class="linkbtn" id="resetBtn">↺ 重設示範資料</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STAGE 1 家長 ================= -->
+<section id="stage1" class="stage duo" hidden>
+  <div class="topbar">
+    <span class="step">STEP 01</span><h2>家長 · 晚上 20:41，想跟導師說件事</h2>
+    <span class="prog" id="prog1"><span class="bar"><i></i></span><span class="pt">0 / 4</span></span>
+    <span class="sp"></span>
+    <button class="ghost" data-go="0">⌂ 返回主選單</button>
+  </div>
+  <div class="banner" id="banner1"><span class="ic">1</span><span class="bwrap"><span class="bt"></span><span class="bnote"></span></span></div>
+  <div class="split">
+    <div>
+      <div class="phonewrap">
+        <div class="phone" id="phone1">
+          <div class="status"><span class="clock">20:41</span><span class="sig">5G <i></i></span></div>
+
+          <div class="screen on" id="p-list">
+            <div class="appbar">
+              <img src="data:image/png;base64,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" alt="">
+              <div><div class="ttl" style="font-size:19px">聯絡老師</div><div class="sub">陳宥廷 · 三年二班 · 光華國小</div></div>
+            </div>
+            <div class="body">
+              <div class="sect">導師</div>
+              <div class="card">
+                <button class="row" id="p-row-teacher">
+                  <div class="avatar av1">林</div>
+                  <div class="row-main">
+                    <div class="row-name">林雅涵 老師<span class="tag">導師</span></div>
+                    <div class="row-meta" id="p-row-meta">目前為非服務時間</div>
+                  </div>
+                  <span class="pill off">非服務時間</span>
+                </button>
+              </div>
+              <p class="note" id="p-list-note"></p>
+              <div class="sect">學校公告</div>
+              <div class="policycard" id="p-policy"></div>
+            </div>
+            <button class="sos" id="p-sos"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 緊急通話</button>
+          </div>
+
+          <div class="screen" id="p-chat">
+            <div class="chathead">
+              <button class="back" id="p-back" aria-label="返回"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+              <div class="avatar sm av1">林</div>
+              <div class="who"><div class="who-name">林雅涵 老師</div><div class="who-sub">三年二班 導師</div></div>
+              <span class="pill off">非服務時間</span>
+            </div>
+            <div class="scope-switch">
+              <button class="active" id="p-sw-group">家長群組</button>
+              <button id="p-sw-solo">只跟老師說</button>
+            </div>
+            <div class="scope-bar" id="p-scope"><i></i><span id="p-scope-t"></span></div>
+            <div class="thread" id="p-thread"></div>
+            <div class="quick" id="p-quick"></div>
+            <div class="compose">
+              <input type="text" id="p-input" aria-label="輸入訊息" autocomplete="off">
+              <button class="send parent" id="p-send" aria-label="送出"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
+            </div>
+          </div>
+
+          <div class="screen" id="p-call">
+            <div class="call">
+              <div class="ring" id="p-ring"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+              <div class="call-name" id="c-name">林雅涵 老師</div>
+              <div class="call-state" id="c-state">撥號中…</div>
+              <div class="call-log">
+                <div class="log" id="c-l1"><b>0 秒</b><span id="c-l1t"></span></div>
+                <div class="log" id="c-l2"><b id="c-l2b">18 秒</b><span>導師未接聽，依學校設定自動轉接</span></div>
+                <div class="log" id="c-l3"><b>接通</b><span id="c-l3t"></span></div>
+              </div>
+              <div class="call-warn">如為人身安全或醫療緊急狀況，請優先撥打 119。</div>
+              <button class="hang" id="c-end">結束通話</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="guide" id="guide1">
+      <div class="gh"><b>操作引導</b><span class="who">身分：陳宥廷的爸爸</span></div>
+      <div class="gtip">點任一步驟，看怎麼做</div>
+      <ol><li id="g1-1"><button class="gstep" data-step="0"><span class="n">1</span><span class="t">進入與導師的對話<small>注意老師旁邊的狀態標籤</small></span><span class="gc">›</span></button><ol class="how"><li>點「林雅涵 老師」那一列</li></ol></li><li id="g1-2"><button class="gstep" data-step="1"><span class="n">2</span><span class="t">在「家長群組」傳一則訊息<small>媽媽和老師都看得到</small></span><span class="gc">›</span></button><ol class="how"><li>點「林雅涵 老師」進入對話</li><li>確認上方選的是「家長群組」</li><li>在輸入框打字，或點一句「建議」</li><li>按右邊的送出鍵</li></ol></li><li id="g1-3"><button class="gstep" data-step="2"><span class="n">3</span><span class="t">在「只跟老師說」傳一則訊息<small>這一則媽媽看不到</small></span><span class="gc">›</span></button><ol class="how"><li>點「林雅涵 老師」進入對話</li><li>點上方「只跟老師說」</li><li>在輸入框打字，或點一句「建議」</li><li>按右邊的送出鍵</li></ol></li><li id="g1-4"><button class="gstep" data-step="3"><span class="n">4</span><span class="t">試撥一次「緊急通話」<small>看看老師沒接會發生什麼</small></span><span class="gc">›</span></button><ol class="how"><li>回到「聯絡老師」頁（按左上角返回）</li><li>點最下方紅色「緊急通話」</li><li>等等看：老師沒接，會轉給誰</li><li>接通後按「結束通話」</li></ol></li></ol>
+      <div class="why"><b>為什麼這樣設計</b><span></span></div>
+    </aside>
+  </div>
+  <div class="donebar" id="done-1" hidden>
+        <span class="dt">✓ 訊息都送到了，緊急通話也轉接到學校值班窗口</span>
+        <span class="db"><button class="btn sm" data-go="0" data-force>返回主選單</button><button class="btn accent sm" data-go="2" id="next-1">以導師身分繼續 →</button></span>
+      </div>
+</section>
+<!-- ================= STAGE 2 導師 ================= -->
+<section id="stage2" class="stage duo" hidden>
+  <div class="topbar">
+    <span class="step">STEP 02</span><h2>導師 · 隔天早上 08:10，回到服務時間</h2>
+    <span class="prog" id="prog2"><span class="bar"><i></i></span><span class="pt">0 / 3</span></span>
+    <span class="sp"></span>
+    <button class="ghost" data-go="0">⌂ 返回主選單</button>
+  </div>
+  <div class="banner" id="banner2"><span class="ic">1</span><span class="bwrap"><span class="bt"></span><span class="bnote"></span></span></div>
+  <div class="split">
+    <div>
+      <div class="phonewrap">
+        <div class="phone" id="phone2">
+          <div class="status"><span class="clock">08:10</span><span class="sig">5G <i></i></span></div>
+
+          <div class="screen withnav on" id="t-home">
+            <div class="appbar">
+              <img src="data:image/png;base64,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" alt="">
+              <div class="ttl">Campus Talk</div>
+              <div class="avatar sm av1" aria-hidden="true">林</div>
+            </div>
+            <div class="body">
+              <div class="sect">三年二班 · 家長訊息</div>
+              <div class="sortrow">
+                <button class="chip active" id="t-sort-unread">未讀優先</button>
+                <button class="chip" id="t-sort-seat">座號排序</button>
+              </div>
+              <div class="card" id="t-list"></div>
+              <p class="note">點學生列進入這位學生的家長群組；點右側箭頭展開，可以單獨跟其中一位家長對話。</p>
+            </div>
+          </div>
+
+          <div class="screen" id="t-chat">
+            <div class="chathead">
+              <button class="back" id="t-back-chat" aria-label="返回"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+              <div id="t-chat-av"></div>
+              <div class="who"><div class="who-name" id="t-chat-name"></div><div class="who-sub" id="t-chat-sub"></div></div>
+            </div>
+            <div class="scope-bar" id="t-chat-scope" style="margin-top:0"><i></i><span></span></div>
+            <div class="thread" id="t-thread"></div>
+            <div class="quick" id="t-quick"></div>
+            <div class="compose">
+              <input type="text" id="t-input" aria-label="輸入訊息" autocomplete="off">
+              <button class="send" id="t-send" aria-label="送出"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
+            </div>
+          </div>
+
+          <div class="screen withnav" id="t-cast">
+            <div class="appbar"><div class="ttl" style="font-size:18px;color:var(--ink)">群發訊息</div></div>
+            <div class="body">
+              <div class="field"><span class="label">發送對象</span><div class="ro">三年二班 · 全班家長（28 位）</div></div>
+              <div class="field"><label class="label" for="t-cast-text">訊息內容</label><textarea class="textarea" id="t-cast-text"></textarea></div>
+              <button class="primary" id="t-cast-send">傳送群發訊息</button>
+              <p class="note">群發會出現在每個家長群組裡。家長的回覆只有您看得到，不會互相洗版；每則群發都會自動記錄已讀狀態。</p>
+              <div id="t-cast-recent"></div>
+            </div>
+          </div>
+
+          <div class="screen" id="t-stats">
+            <div class="appbar">
+              <button class="back" id="t-back-stats" aria-label="返回"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+              <div class="ttl" style="font-size:18px;color:var(--ink)">群發訊息詳情</div>
+            </div>
+            <div class="body">
+              <div class="card" style="padding:14px 16px">
+                <div class="time" id="t-stats-meta"></div>
+                <div style="font-size:14.5px;line-height:1.7;margin-top:6px" id="t-stats-text"></div>
+              </div>
+              <div class="sect">已讀狀態</div>
+              <div class="card">
+                <div class="statband"><span class="statnum" id="t-stat-n">0</span><span class="stattot">/ 28 位家長</span><span class="statcap" id="t-stat-cap"></span></div>
+                <div class="progress"><span id="t-stat-bar"></span></div>
+              </div>
+              <div class="sect">尚未讀取</div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px" id="t-stat-unread"></div>
+              <button class="remind" id="t-remind">再次提醒 4 位未讀家長</button>
+            </div>
+          </div>
+
+          <div class="screen withnav" id="t-dnd">
+            <div class="appbar"><div class="ttl" style="font-size:18px;color:var(--ink)">服務時間</div></div>
+            <div class="body">
+              <div class="policycard" id="t-dnd-policy"></div>
+              <div class="sect">我的非服務時間（每天幾點開始暫停推播）</div>
+              <div class="card" id="t-dnd-days"></div>
+              <p class="note" id="t-dnd-note"></p>
+            </div>
+          </div>
+
+          <div class="navbar" id="t-nav">
+            <button class="nav active" id="t-nav-home"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>訊息</button>
+            <button class="nav" id="t-nav-cast"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>群發訊息</button>
+            <button class="nav" id="t-nav-dnd"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>服務時間</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="guide" id="guide2">
+      <div class="gh"><b>操作引導</b><span class="who">身分：林雅涵 老師（導師）</span></div>
+      <div class="gtip">點任一步驟，看怎麼做</div>
+      <ol><li id="g2-1"><button class="gstep" data-step="0"><span class="n">1</span><span class="t">回覆陳宥廷的家長群組<small>昨晚家長打的字會原樣出現</small></span><span class="gc">›</span></button><ol class="how"><li>在訊息列表點「陳宥廷」那一列</li><li>在輸入框打字，或點一句「建議」</li><li>按右邊的送出鍵</li></ol></li><li id="g2-2"><button class="gstep" data-step="1"><span class="n">2</span><span class="t">回覆陳宥廷爸爸的個別對話<small>這一則媽媽看不到</small></span><span class="gc">›</span></button><ol class="how"><li>點陳宥廷右側的箭頭，展開家長名單</li><li>點「陳宥廷的爸爸」</li><li>在輸入框打字，或點一句「建議」</li><li>按右邊的送出鍵</li></ol></li><li id="g2-3"><button class="gstep" data-step="2"><span class="n">3</span><span class="t">群發一則班級通知<small>傳完會看到已讀統計</small></span><span class="gc">›</span></button><ol class="how"><li>點底部「群發訊息」</li><li>看一下內容，想改可以直接改</li><li>按「傳送群發訊息」</li><li>看家長陸續已讀</li></ol></li></ol>
+      <div class="why"><b>為什麼這樣設計</b><span></span></div>
+    </aside>
+  </div>
+  <div class="donebar" id="done-2" hidden>
+        <span class="dt">✓ 家長群組、個別對話都回覆了，群發通知也送達全班</span>
+        <span class="db"><button class="btn sm" data-go="0" data-force>返回主選單</button><button class="btn accent sm" data-go="3" id="next-2">以學校身分繼續 →</button></span>
+      </div>
+</section>
+<!-- ================= STAGE 3 學校 ================= -->
+<section id="stage3" class="stage" hidden>
+  <div class="topbar">
+    <span class="step">STEP 03</span><h2>學校 · 學務處後台，訂下全校共同的規則</h2>
+    <span class="prog" id="prog3"><span class="bar"><i></i></span><span class="pt">0 / 3</span></span>
+    <span class="sp"></span>
+    <button class="ghost" data-go="0">⌂ 返回主選單</button>
+  </div>
+  <div class="banner" id="banner3"><span class="ic">1</span><span class="bwrap"><span class="bt"></span><span class="bnote"></span></span></div>
+  <div class="split wide">
+    <div>
+      <div class="frame">
+        <div class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">1campus.net — Campus Talk › 學校管理 › 光華國小</span></div>
+        <div class="adminbar"><img src="data:image/png;base64,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" alt=""><span class="ttl">Campus Talk 學校管理</span><span class="who">登入者：學務處 吳主任</span></div>
+        <div class="admin">
+          <div class="side">
+            <div class="sch">設定</div>
+            <button class="active" id="s-tab-policy">🕒 服務時間政策</button>
+            <button id="s-tab-duty">☎ 緊急通話值班</button>
+            <div class="sch" style="margin-top:10px">紀錄</div>
+            <button id="s-tab-log">📋 緊急通話紀錄</button>
+          </div>
+
+          <div class="pane" id="s-pane-policy">
+            <h3>服務時間政策</h3>
+            <p class="lead">由學校統一訂定、公告給全校家長。老師可以比這個基準提早開始非服務時間，但不能晚於學校訂的界線。</p>
+            <div class="frow"><div class="k">平日服務時間<small>週一至週五</small></div><div><select class="select" id="s-start"><option>07:30</option><option>08:00</option></select>　至　<select class="select" id="s-end"><option>17:00</option><option selected>18:00</option><option>19:00</option></select></div></div>
+            <div class="frow"><div class="k">週末與國定假日<small>全天為非服務時間</small></div><div><button class="toggle on" id="s-weekend" aria-label="週末全天非服務時間"></button></div></div>
+            <div class="frow"><div class="k">老師可提早<small>可比基準提早，不可延後</small></div><div><button class="toggle on" id="s-early" aria-label="允許老師提早"></button></div></div>
+            <div class="preview"><b>家長端會看到</b><span id="s-preview"></span><br><b style="margin-top:6px">老師端會看到</b><span id="s-early-note"></span></div>
+            <div class="actions"><button class="btn accent" id="s-save-policy">儲存並公告家長</button><span class="okline" id="s-ok-policy" hidden>✓ 已公告 · 家長端提示卡同步更新</span></div>
+          </div>
+
+          <div class="pane" id="s-pane-duty" hidden>
+            <h3>緊急通話值班</h3>
+            <p class="lead">家長撥緊急通話、導師未接聽時的轉接對象。綁的是職務，不是某一個人——人員輪替不影響。</p>
+            <div class="frow"><div class="k">未接聽轉接秒數</div><div><select class="select" id="s-sec"><option value="15">15 秒</option><option value="18" selected>18 秒</option><option value="20">20 秒</option></select></div></div>
+            <div class="frow"><div class="k">值班窗口<small>依職務指定</small></div><div><select class="select" id="s-duty"><option>學務處值班人員</option><option>學年主任</option><option>生教組長</option></select></div></div>
+            <div class="frow"><div class="k">深夜提醒<small>22:00–06:00 通話畫面加註</small></div><div><button class="toggle on" id="s-night" aria-label="深夜提醒"></button></div></div>
+            <div class="preview"><b>家長端會看到</b><span id="s-duty-preview"></span></div>
+            <div class="actions"><button class="btn accent" id="s-save-duty">儲存設定</button><span class="okline" id="s-ok-duty" hidden>✓ 已儲存</span></div>
+          </div>
+
+          <div class="pane" id="s-pane-log" hidden>
+            <h3>緊急通話紀錄</h3>
+            <p class="lead">每一通緊急通話都留下發起時間、是否接通與接通者，學校可以掌握機制有沒有在運作。學校看不到訊息內容。</p>
+            <div id="s-log-body"></div>
+            <div id="s-log-foot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="guide" id="guide3">
+      <div class="gh"><b>操作引導</b><span class="who">身分：學務處 吳主任</span></div>
+      <div class="gtip">點任一步驟，看怎麼做</div>
+      <ol><li id="g3-1"><button class="gstep" data-step="0"><span class="n">1</span><span class="t">儲存並公告服務時間<small>家長端提示卡就是從這裡來的</small></span><span class="gc">›</span></button><ol class="how"><li>點左側「服務時間政策」</li><li>選平日的服務時間（可不改）</li><li>按「儲存並公告家長」</li></ol></li><li id="g3-2"><button class="gstep" data-step="1"><span class="n">2</span><span class="t">設定緊急通話值班窗口<small>綁職務，不綁個人</small></span><span class="gc">›</span></button><ol class="how"><li>點左側「緊急通話值班」</li><li>選轉接秒數和值班職務</li><li>按「儲存設定」</li></ol></li><li id="g3-3"><button class="gstep" data-step="2"><span class="n">3</span><span class="t">查看緊急通話紀錄<small>找找 STEP 01 那一通</small></span><span class="gc">›</span></button><ol class="how"><li>點左側「緊急通話紀錄」</li><li>找標著 STEP 01 的那一筆</li></ol></li></ol>
+      <div class="why"><b>為什麼這樣設計</b><span></span></div>
+    </aside>
+  </div>
+  <div class="donebar" id="done-3" hidden>
+        <span class="dt">✓ 示範到此結束。服務時間與值班窗口由學校守住，老師不用自己當壞人。</span>
+        <span class="db"><button class="btn accent sm" data-go="0" data-force id="next-3">⌂ 回到主選單</button></span>
+      </div>
+</section>
+
+</div>
+<div class="toasts" id="toasts"></div>
+<div id="modalHost"></div>
+<script>
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function addMin(hm,n){let [h,m]=hm.split(':').map(Number);m+=n;h+=Math.floor(m/60);m%=60;return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0');}
+const G={'爸':'爸爸','媽':'媽媽','奶':'奶奶'};
+const DUTY={'學務處值班人員':'學務處 吳主任','學年主任':'三年級學年主任 黃老師','生教組長':'生教組長 張老師'};
+const D_BASE='115/10/26（一）', D_NIGHT='115/10/27（二）', D_TODAY='115/10/28（三）', D_SOLO='115/10/22（四）';
+const PG_DEF='老師您好，宥廷明天下午要回醫院複診，想幫他請假，麻煩老師了。';
+const PS_DEF='老師，想單獨請教宥廷最近寫功課容易分心的狀況，方便找時間聊聊嗎？';
+const CAST_DEF='各位家長好：11/13（五）三年級將前往新竹市立動物園校外教學，同意書今天發下，請於 11/6（五）前簽名交回，謝謝大家！';
+
+let S;
+function fresh(){return{
+  p:{opened:false,group:[],solo:[],calls:[],seq:0,scope:'group',screen:'p-list',connected:false},
+  t:{msgs:{},casts:[],read:{},seq:0,doneGroup:false,doneSolo:false,doneCast:false,dnd:{},ctx:null,screen:'t-home',sort:'unread',open:{},autoOpened:false,statIdx:-1,counting:false,warned:false},
+  s:{policy:false,duty:false,log:false,start:'07:30',end:'18:00',role:'學務處值班人員',sec:18,tab:'policy',weekend:true,early:true,night:true},
+  done:{1:false,2:false,3:false},view:{1:null,2:null,3:null}};}
+S=fresh();
+
+/* ---------- toast ---------- */
+let bnTimer=0;
+function toast(t,sub,kind){
+  if(matchMedia('(max-width:920px)').matches||document.body.classList.contains('no-side')){ const st=$$('section.stage').find(x=>!x.hidden); const bn=st&&st.querySelector('.banner .bnote');
+    if(bn){ bn.textContent='💬 '+t+(sub?'　'+sub:''); bn.classList.remove('show'); void bn.offsetWidth; bn.classList.add('show'); clearTimeout(bnTimer); bnTimer=setTimeout(()=>bn.classList.remove('show'),5000); return; } }
+  const h=$('#toasts'); if([...h.children].some(c=>c.dataset.t===t))return;
+  const d=document.createElement('div'); d.className='toast'+(kind?' '+kind:''); d.dataset.t=t; d.innerHTML='<b></b><span></span>'; d.children[0].textContent=t; d.children[1].textContent=sub||'';
+  h.appendChild(d); while(h.children.length>2)h.firstChild.remove(); d.addEventListener('click',()=>d.remove()); setTimeout(()=>d.remove(),4500); placeToasts(); }
+function placeToasts(){ const h=$('#toasts'); let bottom=18; const db=$$('.donebar').find(x=>!x.hidden&&x.offsetParent);
+  if(db){ const r=db.getBoundingClientRect(); if(r.top<innerHeight&&r.bottom>innerHeight-200) bottom=Math.max(18,Math.round(innerHeight-r.top+12)); }
+  h.style.bottom=bottom+'px'; }
+addEventListener('scroll',()=>requestAnimationFrame(placeToasts),true); addEventListener('resize',placeToasts);
+
+/* ---------- coach ---------- */
+let coachEl=null, coachTarget=null, raf=0;
+function hot(sel,label){
+  $$('.hot').forEach(e=>e.classList.remove('hot')); $$('.inhint').forEach(e=>e.remove());
+  const t=sel?$(sel):null;
+  if(!t){ coachTarget=null; if(coachEl)coachEl.classList.remove('show'); return; }
+  t.classList.add('hot');
+  if(!label||t.closest('.side')||t.closest('.donebar')){ if(label&&t.closest('.side')){ const h=document.createElement('span'); h.className='inhint'; h.textContent=label; t.appendChild(h); } coachTarget=null; if(coachEl)coachEl.classList.remove('show'); return; }
+  if(!coachEl){ coachEl=document.createElement('div'); coachEl.className='coach'; coachEl.innerHTML='<span class="lbl"></span><span class="arr"></span>'; document.body.appendChild(coachEl); }
+  const changed = coachTarget!==t || coachEl.querySelector('.lbl').textContent!==label;
+  coachTarget=t; coachEl.querySelector('.lbl').textContent=label;
+  if(changed){ coachEl.classList.remove('show'); }
+  placeCoach(); setTimeout(placeCoach,300);
+}
+function placeCoach(){
+  if(!coachEl)return; const t=coachTarget;
+  if(!t||!t.isConnected||!t.offsetParent){ coachEl.classList.remove('show'); return; }
+  const r=t.getBoundingClientRect(); let vis=r.bottom>0&&r.top<innerHeight&&r.width>0;
+  const sc=t.closest('.body,.thread'); if(sc){const sr=sc.getBoundingClientRect(); if(r.bottom<sr.top+6||r.top>sr.bottom-6)vis=false;}
+  if($('.modal'))vis=false;
+  const cw=coachEl.offsetWidth, ch=coachEl.offsetHeight; const phone=t.closest('.phone');
+  let mode='above', left, top;
+  if(phone){ const pr=phone.getBoundingClientRect(); if(pr.left>cw+30){ mode='side'; left=pr.left-cw-14; top=r.top+r.height/2-ch/2; } else { coachEl.classList.remove('show'); return; } }
+  if(mode!=='side'&&t.closest('.frame')&&r.right+cw+20<innerWidth){ mode='right'; left=r.right+12; top=r.top+r.height/2-ch/2; }
+  if(mode!=='side'&&mode!=='right'){ coachEl.classList.remove('show'); return; }
+  if(false){ if(r.top<ch+16)mode='below'; left=Math.max(8,Math.min(r.left+r.width/2-cw/2,innerWidth-cw-8)); top=mode==='above'?r.top-ch-10:r.bottom+10; }
+  coachEl.classList.toggle('c-side',mode==='side'); coachEl.classList.toggle('c-below',mode==='below'); coachEl.classList.toggle('c-right',mode==='right');
+  coachEl.style.transform='translate('+Math.round(left)+'px,'+Math.round(top)+'px)';
+  coachEl.classList.toggle('show',vis);
+}
+function sideCheck(){ const ph=$$('.phone').find(x=>x.offsetParent); const f=$$('.frame').find(x=>x.offsetParent);
+  let no=false; if(ph){ no=ph.getBoundingClientRect().left<150; } else if(f){ no=innerWidth<1000; }
+  document.body.classList.toggle('no-side',no); }
+addEventListener('resize',sideCheck);
+function schedule(){ if(raf)return; raf=requestAnimationFrame(()=>{raf=0;placeCoach();}); }
+addEventListener('scroll',schedule,true); addEventListener('resize',schedule);
+
+/* ---------- guide ---------- */
+const WHY={
+ p:[['導師是固定窗口','家長不用加老師的私人 LINE，打開 1Campus 就找得到導師——關係跟著學籍走，換班換老師都不用重新加。'],
+    ['為什麼晚上也能傳','現在是學校訂的非服務時間。訊息照樣送得出去，老師明早才會收到通知——不會在晚上被吵醒。'],
+    ['為什麼要分兩種','一個孩子常有兩三位家長在關心。一般事項在家長群組說一次就好；想私下談，就切到「只跟老師說」。'],
+    ['為什麼要另開電話','真正緊急的事不該混在訊息裡。訊息可以等，電話不能等——老師沒接，自動轉給學校值班的人。'],
+    ['這一段完成了','家長不用加好友、晚上傳訊息不會吵到老師、真的緊急永遠找得到人。接著換導師，看看隔天早上收到什麼。']],
+ t:[['界線是學校守的','昨晚家長傳的訊息，您今天早上才收到通知——不是家長被拒絕，是學校的服務時間在替您守界線。'],
+    ['私下的就留在私下','家長選擇私下講，就是希望私下講。系統不提供「轉到群組」的捷徑——這個摩擦是刻意留的。'],
+    ['群發不洗版','群發會進到每個家長群組，家長的回覆只有您看得到——不會出現 28 個「收到」洗掉重要訊息。'],
+    ['這一段完成了','老師不用記家長名字、不用自己建群組、不用在晚上回訊息。接著看學校端怎麼把規則訂下來。']],
+ s:[['規則是學校的','服務時間是學校的制度，不是某位老師的選擇。家長面對的是規則，不是被某個人拒絕。'],
+    ['綁職務，不綁人','值班窗口綁職務不綁個人——誰輪到誰接，老師不用私下拜託同事幫忙接電話。'],
+    ['紀錄給制度用','學校看得到緊急通話有沒有被接起、誰接的，但看不到訊息內容。紀錄是給制度用的，不是用來監看。'],
+    ['示範到此結束','家長找得到人、老師守得住界線、學校訂得了規則——三方各拿回一件事。']]};
+function steps(n){ return $$('#guide'+n+' > ol > li'); }
+function applyGuide(n,done,auto,route){
+  const key={1:'p',2:'t',3:'s'}[n]; const items=steps(n); const total=items.length;
+  const v=S.view[n]; const coachIdx=(v!=null&&!done[v])?v:auto; const openIdx=v!=null?v:auto;
+  const r=coachIdx>=0?route(coachIdx):{m:0,target:null};
+  items.forEach((li,i)=>{ li.classList.toggle('ok',!!done[i]); li.classList.toggle('cur',i===coachIdx&&!done[i]); li.classList.toggle('open',i===openIdx);
+    li.querySelectorAll('.how li').forEach((h,j)=>{ const d=done[i]||(i===coachIdx&&j<r.m); h.classList.toggle('done',d); h.classList.toggle('now',!done[i]&&i===coachIdx&&j===r.m); }); });
+  const fin=done.every(Boolean); const wi=fin?WHY[key].length-1:Math.max(0,coachIdx);
+  const w=WHY[key][wi]; $('#guide'+n+' .why b').textContent=w[0]; $('#guide'+n+' .why span').textContent=w[1];
+  const cnt=done.filter(Boolean).length; const p=$('#prog'+n); p.querySelector('i').style.width=Math.round(cnt/total*100)+'%'; p.querySelector('.pt').textContent=cnt+' / '+total;
+  const b=$('#banner'+n); b.classList.toggle('fin',fin); b.querySelector('.ic').textContent=fin?'✓':(coachIdx+1);
+  if(fin) b.querySelector('.bt').innerHTML='<b>這一段完成了。</b>往下按綠色按鈕，繼續下一個身分。';
+  else { const hw=items[coachIdx].querySelectorAll('.how li'); b.querySelector('.bt').innerHTML='<b>'+esc(items[coachIdx].querySelector('.t').firstChild.textContent)+'</b>　'+esc(hw[Math.min(r.m,hw.length-1)].textContent); }
+  if(fin){ const nx=$('#next-'+n); hot(nx&&!$('#done-'+n).hidden&&!(n===2&&S.t.counting)?'#next-'+n:null, null); }
+  else hot(r.target,r.label);
+}
+document.addEventListener('click',e=>{ const g=e.target.closest('.gstep'); if(!g)return; const n=+g.closest('.guide').id.replace('guide',''); const i=+g.dataset.step;
+  S.view[n]=(S.view[n]===i)?null:i; refresh(); });
+function completed(n){ S.view[n]=null; }
+/* ---------- thread rendering ---------- */
+function renderThread(el,items,parentSide,animN){
+  el.innerHTML=items.map(it=>{
+    if(it.type==='day')return '<div class="day">'+esc(it.text)+'</div>';
+    if(it.type==='sys')return '<div class="sysnote">'+esc(it.text)+'</div>';
+    if(it.type==='rest')return '<div class="rest"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span>目前為非服務時間（學校政策：'+esc(S.s.end)+' 起）。您的訊息已送達，老師將於服務時間回覆您。</span></div>';
+    const who=it.who?'<span class="who-lab">'+esc(it.who)+'</span>':''; const tag=it.tag?'<span class="btag">'+esc(it.tag)+'</span><br>':'';
+    const b='<div class="bubble">'+who+tag+esc(it.text)+'</div>';
+    if(it.side==='me')return '<div class="brow me'+(parentSide?' parent':'')+'">'+(it.read?'<span class="bread">'+esc(it.read)+'</span>':'')+'<span class="btime">'+esc(it.time)+'</span>'+b+'</div>';
+    return '<div class="brow them">'+b+'<span class="btime">'+esc(it.time)+'</span></div>';
+  }).join('');
+  const kids=el.children; for(let i=Math.max(0,kids.length-(animN||0));i<kids.length;i++)kids[i].classList.add('in');
+  if(animN)el.scrollTo({top:el.scrollHeight,behavior:'smooth'}); else el.scrollTop=el.scrollHeight;
+}
+const day=t=>({type:'day',text:t}); const msg=(side,who,text,time,extra)=>Object.assign({type:'msg',side,who,text,time},extra||{});
+const byTime=(a,b)=>a.time<b.time?-1:a.time>b.time?1:0;
+
+/* ---------- navigation ---------- */
+function go(n){
+  hot(null); setTimeout(sideCheck,0); clearTimers();
+  [0,1,2,3].forEach(i=>{$('#stage'+i).hidden=i!==n;});
+  document.body.classList.toggle('at-home',n===0); closeModal();
+  if(n===0)renderHome(); if(n===1)enterP(); if(n===2)enterT(); if(n===3)enterS();
+  scrollTo({top:0,behavior:'smooth'});
+}
+document.addEventListener('click',e=>{ const b=e.target.closest('[data-go]'); if(!b)return; const n=+b.dataset.go;
+  if(n===0&&!b.hasAttribute('data-force')){ const left=pending(); if(left){openLeave(left);return;} } go(n); });
+function renderHome(){ [1,2,3].forEach(i=>{$('#done'+i).hidden=!S.done[i];}); }
+$('#resetBtn').addEventListener('click',()=>{ S=fresh(); clearTimers(); renderHome(); toast('已重設示範資料','三個身分都回到起點。'); });
+function closeModal(){ $('#modalHost').innerHTML=''; schedule(); }
+$('#modalHost').addEventListener('click',e=>{ if(e.target.matches('[data-close]')||e.target.classList.contains('modal'))closeModal(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape')closeModal(); });
+function pending(){
+  const titles=n=>steps(n).map(li=>li.querySelector('.t').firstChild.textContent);
+  let n=0,d=[]; if(!$('#stage1').hidden){n=1;d=pDone();} else if(!$('#stage2').hidden){n=2;d=tDone();} else if(!$('#stage3').hidden){n=3;d=sDone();}
+  if(!n)return null; const L=titles(n).filter((_,i)=>!d[i]); return L.length?{role:{1:'家長',2:'導師',3:'學校'}[n],steps:L}:null;
+}
+function openLeave(left){
+  hot(null);
+  $('#modalHost').innerHTML='<div class="modal"><div class="box"><h3>'+left.role+'這一段還有 '+left.steps.length+' 個步驟沒做完</h3><p class="sub">現在離開也可以，示範資料會保留；只是下一個身分會少看到這些步驟的結果。</p><ul class="leftlist">'+left.steps.map((s,i)=>'<li><span class="ln">'+(i+1)+'</span><div><b>'+esc(s)+'</b></div></li>').join('')+'</ul><div class="row2"><button class="btn" data-go="0" data-force>仍要離開</button><button class="btn accent" data-close>繼續操作</button></div></div></div>';
+}
+$('#modalHost').addEventListener('click',e=>{ if(e.target.matches('[data-close]')){ refresh(); } });
+let timers=[]; function clearTimers(){timers.forEach(t=>{clearTimeout(t);clearInterval(t);});timers=[];}
+function refresh(){ if(!$('#stage1').hidden)pGuide(); else if(!$('#stage2').hidden)tGuide(); else if(!$('#stage3').hidden)sGuide(); }
+function showDone(n){ const bar=$('#done-'+n); const first=bar.hidden; bar.hidden=false; placeToasts(); if(first){ setTimeout(()=>{ bar.scrollIntoView({behavior:'smooth',block:'center'}); setTimeout(placeToasts,600); },250); } }
+
+/* =================== STAGE 1 家長 =================== */
+const Q_P={group:['老師您好，宥廷明天下午要回醫院複診，想幫他請假，麻煩老師了。','請問明天體育課需要帶什麼嗎？','收到，謝謝老師！'],
+           solo:['老師，想單獨請教宥廷最近寫功課容易分心的狀況，方便找時間聊聊嗎？','宥廷最近在家情緒比較低落，想請老師在學校幫忙多留意。']};
+function pDone(){ return [S.p.opened,S.p.group.length>0,S.p.solo.length>0,S.p.calls.length>0]; }
+function enterP(){ S.view[1]=null; S.p.screen='p-list'; S.p.scope='group'; pShow('p-list'); $('#done-1').hidden=!S.done[1]; }
+function pShow(id){ S.p.screen=id; $$('#phone1 .screen').forEach(s=>s.classList.toggle('on',s.id===id)); if(id==='p-list')pRenderList(); if(id==='p-chat')pRenderChat(0); pGuide(); }
+function pRenderList(){
+  const n=S.p.group.length+S.p.solo.length;
+  $('#p-row-meta').textContent= n? '已傳 '+n+' 則 · 明早 '+S.s.start+' 後處理' : '目前為非服務時間 · 學校規定 '+S.s.end+' 起';
+  $('#p-policy').innerHTML='<b>光華國小 親師溝通時間</b>平日 '+S.s.start+'–'+S.s.end+' 為服務時間；'+(S.s.weekend?'夜間、週末與國定假日':'夜間')+'為非服務時間，訊息照收、隔天處理。真正緊急，請用下方「緊急通話」。';
+  $('#p-list-note').textContent='導師是您固定的聯絡窗口，不用搜尋、不用加好友。老師的狀態在點進去之前就看得到——現在是學校訂的非服務時間，訊息照樣可以傳。';
+}
+function pItems(scope){
+  const it=[];
+  if(scope==='group'){
+    it.push(day(D_BASE)); it.push(msg('them','林老師','陳爸爸好，提醒一下明天有體育課，宥廷記得穿運動服、帶水壺喔。','12:30')); it.push(msg('them','媽媽','收到，謝謝老師～','12:47'));
+    if(S.p.group.length){ it.push(day('今天 '+D_NIGHT)); S.p.group.forEach((m,i)=>{ it.push(msg('me','',m.text,m.time)); if(i===0)it.push({type:'rest'}); }); }
+    const later=[...(S.t.msgs['g-5']||[]).map(m=>msg('them','林老師',m.text,m.time)),...S.t.casts.map(c=>msg('them','林老師',c.text,c.time,{tag:'班級群發'}))].sort(byTime);
+    if(later.length){ it.push(day(D_TODAY)); it.push(...later); }
+  } else {
+    it.push(day(D_SOLO)); it.push(msg('me','','老師好，想約時間聊聊宥廷最近的學習狀況。','16:02')); it.push(msg('them','','沒問題，週五放學後 16:10 在教室，您方便嗎？','16:35')); it.push(msg('me','','可以，謝謝老師！','16:41'));
+    if(S.p.solo.length){ it.push(day('今天 '+D_NIGHT)); S.p.solo.forEach((m,i)=>{ it.push(msg('me','',m.text,m.time)); if(i===0)it.push({type:'rest'}); }); }
+    const later=(S.t.msgs['s-5-爸']||[]).map(m=>msg('them','',m.text,m.time));
+    if(later.length){ it.push(day(D_TODAY)); it.push(...later); }
+  }
+  return it;
+}
+function pRenderChat(animN){
+  const g=S.p.scope==='group';
+  $('#p-sw-group').classList.toggle('active',g); $('#p-sw-solo').classList.toggle('active',!g);
+  $('#p-scope').className=g?'scope-bar':'scope-bar solo';
+  $('#p-scope-t').textContent=g?'家長群組 · 媽媽和老師都看得到':'只跟老師說 · 媽媽看不到這裡的內容';
+  $('#p-input').placeholder=g?'媽媽和老師都會看到…':'只有老師看得到…';
+  $('#p-quick').innerHTML='<span class="ql">建議</span>'+Q_P[S.p.scope].map((q,i)=>'<button data-q="'+i+'">'+esc(q)+'</button>').join('');
+  renderThread($('#p-thread'),pItems(S.p.scope),true,animN);
+}
+$('#p-row-teacher').addEventListener('click',()=>{ S.p.opened=true; pShow('p-chat'); });
+$('#p-back').addEventListener('click',()=>pShow('p-list'));
+$('#p-sw-group').addEventListener('click',()=>{ S.p.scope='group'; $('#p-input').value=''; pRenderChat(0); pGuide(); });
+$('#p-sw-solo').addEventListener('click',()=>{ S.p.scope='solo'; $('#p-input').value=''; pRenderChat(0); pGuide(); });
+$('#p-quick').addEventListener('click',e=>{ const b=e.target.closest('[data-q]'); if(!b)return; $('#p-input').value=Q_P[S.p.scope][+b.dataset.q]; $('#p-input').focus(); pGuide(); });
+$('#p-input').addEventListener('input',pGuide);
+$('#p-input').addEventListener('keydown',e=>{ if(e.key==='Enter'&&!e.isComposing){e.preventDefault();pSend();} });
+$('#p-send').addEventListener('click',pSend);
+function pSend(){
+  const inp=$('#p-input'); const text=inp.value.trim();
+  if(!text){ inp.classList.remove('shake'); void inp.offsetWidth; inp.classList.add('shake'); inp.focus(); return; }
+  const arr=S.p.scope==='group'?S.p.group:S.p.solo; const first=arr.length===0;
+  arr.push({text,time:addMin('20:41',S.p.seq++)}); inp.value='';
+  pRenderChat(first?2:1); if(first)completed(1);
+  if(first&&S.p.scope==='group')toast('訊息已送達','老師明天服務時間會看到。您不用等回覆，老師也不會在晚上被吵醒。');
+  if(first&&S.p.scope==='solo')toast('只有老師看得到這一則','媽媽的 App 不會出現這段對話。');
+  pGuide(); pCheck();
+}
+$('#p-sos').addEventListener('click',pCall);
+$('#c-end').addEventListener('click',pEndCall);
+function pCall(){
+  clearTimers(); S.p.connected=false; pShow('p-call');
+  const sec=S.s.sec, who=DUTY[S.s.role], time=addMin('20:52',S.p.calls.length*3);
+  $('#c-name').textContent='林雅涵 老師'; $('#c-state').textContent='撥號中…'; $('#p-call .call-warn').hidden=!S.s.night; $('#p-ring').classList.add('ringing');
+  ['c-l1','c-l2','c-l3'].forEach(i=>$('#'+i).classList.remove('on'));
+  $('#c-l1t').textContent='撥出，記錄發起時間 '+time; $('#c-l2b').textContent=sec+' 秒'; $('#c-l3t').textContent='學校值班窗口 · '+who;
+  $('#c-end').textContent='取消';
+  timers.push(setTimeout(()=>$('#c-l1').classList.add('on'),400));
+  let s=0; timers.push(setTimeout(()=>{ const iv=setInterval(()=>{ s++; $('#c-state').textContent='響鈴中，老師未接聽… '+s+' 秒'; if(s>=sec){ clearInterval(iv); $('#c-l2').classList.add('on'); $('#c-state').textContent='轉接學校值班窗口…'; timers.push(setTimeout(connect,1200)); } },Math.round(2600/sec)); timers.push(iv); },700));
+  function connect(){ $('#c-l3').classList.add('on'); $('#c-name').textContent=who; $('#c-state').textContent='已接通'; $('#p-ring').classList.remove('ringing'); $('#c-end').textContent='結束通話';
+    S.p.connected=true; S.p.calls.push({time,sec,who}); completed(1); toast('老師沒接，'+sec+' 秒後自動轉給學校','家長永遠找得到人，老師也不用整晚盯著手機。'); pGuide(); }
+  pGuide();
+}
+function pEndCall(){ const was=S.p.connected; clearTimers(); $('#p-ring').classList.remove('ringing'); S.p.connected=false; if(!was)toast('已取消通話','需要時再撥就好。','info'); pShow('p-list'); pCheck(); }
+function pCheck(){ const d=pDone(); if(d.every(Boolean)){ if(!S.done[1]){S.done[1]=true;} showDone(1); pGuide(); } }
+function pAuto(d){ const scr=S.p.screen; if(scr==='p-chat'){ if(S.p.scope==='group'&&!d[1])return 1; if(S.p.scope==='solo'&&!d[2])return 2; } if(scr==='p-call'&&!d[3])return 3; return d.indexOf(false); }
+function pRoute(i){
+  const scr=S.p.screen, sc=S.p.scope, has=$('#p-input').value.trim().length>0;
+  if(i===0) return scr==='p-list'?{m:0,target:'#p-row-teacher',label:'點老師進入對話'}:{m:0,target:null};
+  if(i===1||i===2){ const want=i===1?'group':'solo';
+    if(scr==='p-call') return {m:0,target:null};
+    if(scr==='p-list') return {m:0,target:'#p-row-teacher',label:'先點老師進入對話'};
+    if(sc!==want) return {m:1,target:want==='group'?'#p-sw-group':'#p-sw-solo',label:want==='group'?'切到家長群組':'切到只跟老師說'};
+    return has?{m:3,target:'#p-send',label:'送出'}:{m:2,target:'#p-input',label:'試著打一句話'}; }
+  if(scr==='p-chat') return {m:0,target:'#p-back',label:'先返回'};
+  if(scr==='p-list') return {m:1,target:'#p-sos',label:'試撥一次'};
+  return S.p.connected?{m:3,target:'#c-end',label:'結束通話'}:{m:2,target:null};
+}
+function pGuide(){ if($('#stage1').hidden)return; const d=pDone(); applyGuide(1,d,pAuto(d),pRoute); }
+
+/* =================== STAGE 2 導師 =================== */
+const STU=[
+  {seat:9,name:'王以晨',c:'晨',av:'av1',g:['媽'],in:{who:'媽媽',text:'老師好，以晨的聯絡簿今天忘記帶回家，想確認明天要交的東西。',time:'19:20'},unread:1,ts:8},
+  {seat:5,name:'陳宥廷',c:'宥',av:'av4',g:['爸','媽'],main:true,ts:9},
+  {seat:24,name:'蔡沛璇',c:'沛',av:'av3',g:['爸','媽'],in:{who:'媽媽',text:'想跟老師約個時間，聊聊沛璇最近上課的狀況。',time:'21:05'},unread:1,ts:7},
+  {seat:15,name:'劉子晴',c:'晴',av:'av2',g:['媽','奶'],in:{who:'奶奶',text:'子晴下週三要牙齒矯正回診，可能會晚一點到校。',time:'18:40'},unread:0,ts:6},
+  {seat:12,name:'林思妤',c:'思',av:'av2',g:['媽'],in:{who:'媽媽',text:'收到，謝謝老師提醒，餐袋明天會讓她帶去。',time:'17:52'},unread:0,ts:4},
+  {seat:21,name:'張晉瑋',c:'晉',av:'av3',g:['爸'],in:{who:'爸爸',text:'晉瑋的健康調查表已填好，明天交給老師。',time:'17:30'},unread:0,ts:3},
+  {seat:3,name:'李承翰',c:'承',av:'av1',g:['爸','媽','奶'],in:{who:'爸爸',text:'同意書簽好了，明天會讓承翰帶去學校。',time:'16:10'},unread:0,ts:2},
+  {seat:27,name:'簡以樂',c:'樂',av:'av4',g:['媽'],in:{who:'媽媽',text:'謝謝老師！',time:'15:48'},unread:0,ts:1},
+  {seat:18,name:'許哲瑜',c:'哲',av:'av2',g:['爸','媽'],in:{who:'爸爸',text:'哲瑜的午餐這學期一樣訂素食，麻煩老師了。',time:'15:20'},unread:0,ts:0}];
+const stu=seat=>STU.find(s=>s.seat===seat);
+const gNames=s=>s.g.map(x=>G[x]).join('、');
+const pg=()=>S.p.group.length?S.p.group:[{text:PG_DEF,time:'20:41'}];
+const ps=()=>S.p.solo.length?S.p.solo:[{text:PS_DEF,time:'20:43'}];
+function incoming(k){ if(k==='g-5')return pg().length; if(k==='s-5-爸')return ps().length; const m=k.match(/^g-(\d+)$/); if(m){const s=stu(+m[1]); return s&&!s.main?s.unread:0;} return 0; }
+const unread=k=>Math.max(0,incoming(k)-(S.t.read[k]||0));
+function stuUnread(s){ return unread('g-'+s.seat)+s.g.reduce((a,x)=>a+unread('s-'+s.seat+'-'+x),0); }
+function tDone(){ return [S.t.doneGroup,S.t.doneSolo,S.t.doneCast]; }
+const tTime=()=>addMin('08:12',S.t.seq++);
+function enterT(){
+  S.view[2]=null;
+  if(!S.p.group.length&&!S.p.solo.length&&!S.t.warned){ S.t.warned=true; toast('家長那一段還沒做','這裡先用範例訊息，回去 STEP 01 打的字會換成您自己的。','info'); }
+  if(!$('#t-cast-text').value)$('#t-cast-text').value=CAST_DEF;
+  tShow('t-home'); $('#done-2').hidden=!S.done[2];
+}
+function tShow(id){
+  S.t.screen=id; $$('#phone2 .screen').forEach(s=>s.classList.toggle('on',s.id===id));
+  $('#t-nav').hidden=!['t-home','t-cast','t-dnd'].includes(id);
+  ['home','cast','dnd'].forEach(k=>$('#t-nav-'+k).classList.toggle('active','t-'+k===id));
+  if(id==='t-home')tRenderList(); if(id==='t-cast')tRenderCast(); if(id==='t-dnd')tRenderDnd();
+  tGuide();
+}
+$('#t-nav-home').addEventListener('click',()=>tShow('t-home'));
+$('#t-nav-cast').addEventListener('click',()=>tShow('t-cast'));
+$('#t-nav-dnd').addEventListener('click',()=>tShow('t-dnd'));
+$('#t-sort-unread').addEventListener('click',()=>tSort('unread'));
+$('#t-sort-seat').addEventListener('click',()=>tSort('seat'));
+function tSort(m){ S.t.sort=m; $('#t-sort-unread').classList.toggle('active',m==='unread'); $('#t-sort-seat').classList.toggle('active',m==='seat'); tRenderList(); toast(m==='seat'?'已依座號排序':'未讀優先',m==='seat'?'回到老師熟悉的班級順序。':'像 LINE 一樣，有事的排前面。','info'); }
+function lastOf(key){ const it=tItems(key).filter(x=>x.type==='msg'); return it[it.length-1]; }
+function tRenderList(){
+  const list=STU.slice().sort((a,b)=>S.t.sort==='seat'?a.seat-b.seat:(stuUnread(b)-stuUnread(a))||(b.ts-a.ts));
+  $('#t-list').innerHTML=list.map(s=>{
+    const last=lastOf('g-'+s.seat); const pv=last?(last.side==='me'?'您：':(last.who?last.who+'：':''))+last.text:''; const u=stuUnread(s); const open=!!S.t.open[s.seat];
+    const kids='<button class="kid" id="t-kid-'+s.seat+'-g" data-open="g-'+s.seat+'"><div class="kid-av g">群</div><div><div class="kid-name">家長群組</div><div class="kid-meta">'+esc(gNames(s))+'都看得到</div></div>'+(unread('g-'+s.seat)?'<span class="badge">'+unread('g-'+s.seat)+'</span>':'')+'</button>'+
+      s.g.map(x=>{ const k='s-'+s.seat+'-'+x, n=unread(k); return '<button class="kid" id="t-kid-'+s.seat+'-'+x+'" data-open="'+k+'"><div class="kid-av">'+x+'</div><div><div class="kid-name">'+esc(s.name)+'的'+G[x]+'</div><div class="kid-meta">個別對話 · 僅您與'+G[x]+'可見</div></div>'+(n?'<span class="badge">'+n+'</span>':'')+'</button>'; }).join('');
+    return '<div class="stu"><button class="row" id="t-row-'+s.seat+'" data-open="g-'+s.seat+'"><div class="avatar '+s.av+'">'+s.c+'</div><div class="row-main"><div class="row-name">'+esc(s.name)+'<span class="tag">'+s.seat+' 號</span></div><div class="row-meta">'+esc(pv)+'</div></div><div class="meta-col"><span class="time">'+(last&&last.time>='08:00'&&last.time<'12:00'&&last.today?'今天':'昨天')+'</span><div style="display:flex;align-items:center;gap:6px"><div class="stack">'+s.g.map(x=>'<span>'+x+'</span>').join('')+'</div>'+(u?'<span class="badge">'+u+'</span>':'')+'</div></div><span class="chev'+(open?' open':'')+'" id="t-chev-'+s.seat+'" data-chev="'+s.seat+'" role="button" tabindex="0" aria-label="展開個別對話"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="kids'+(open?' open':'')+'" id="t-kids-'+s.seat+'">'+kids+'</div></div>';
+  }).join('');
+}
+$('#t-list').addEventListener('click',e=>{
+  const c=e.target.closest('[data-chev]'); if(c){ e.stopPropagation(); const seat=+c.dataset.chev; S.t.open[seat]=!S.t.open[seat]; $('#t-kids-'+seat).classList.toggle('open',S.t.open[seat]); c.classList.toggle('open',S.t.open[seat]); tGuide(); return; }
+  const o=e.target.closest('[data-open]'); if(o)tOpen(o.dataset.open);
+});
+function parseKey(k){ const m=k.match(/^([gs])-(\d+)(?:-(.))?$/); return {type:m[1],seat:+m[2],g:m[3]}; }
+function tItems(k){
+  const {type,seat,g}=parseKey(k); const s=stu(seat); const it=[];
+  const mine=(S.t.msgs[k]||[]).map(m=>msg('me','',m.text,m.time,{today:true}));
+  const casts=type==='g'?S.t.casts.map(c=>msg('me','',c.text,c.time,{tag:'班級群發',today:true})):[];
+  if(k==='g-5'){ it.push(day(D_BASE)); it.push(msg('me','','陳爸爸好，提醒一下明天有體育課，宥廷記得穿運動服、帶水壺喔。','12:30',{read:'已讀'})); it.push(msg('them','媽媽','收到，謝謝老師～','12:47'));
+    it.push(day(D_NIGHT)); pg().forEach(m=>it.push(msg('them','爸爸',m.text,m.time))); }
+  else if(k==='s-5-爸'){ it.push(day(D_SOLO)); it.push(msg('them','','老師好，想約時間聊聊宥廷最近的學習狀況。','16:02')); it.push(msg('me','','沒問題，週五放學後 16:10 在教室，您方便嗎？','16:35',{read:'已讀'})); it.push(msg('them','','可以，謝謝老師！','16:41'));
+    it.push(day(D_NIGHT)); ps().forEach(m=>it.push(msg('them','',m.text,m.time))); }
+  else if(type==='g'){ it.push(day(D_NIGHT)); it.push(msg('them',s.in.who,s.in.text,s.in.time)); }
+  else { it.push({type:'sys',text:'這裡只有您和'+s.name+'的'+G[g]+'看得到。目前還沒有個別對話。'}); }
+  const later=[...mine,...casts].sort(byTime); if(later.length){ it.push(day('今天 '+D_TODAY)); it.push(...later); }
+  return it;
+}
+const Q_T={'g-5':['收到，祝宥廷複診順利！請假可以直接從 1Campus「請假申請」送出，我核可後會通知學務處。','好的，明天下午的課我會幫宥廷留意進度。'],
+           's-5-爸':['好的，這部分我會多留意宥廷在班上的狀況，有需要我們再約時間談。','謝謝您告訴我，這週五放學後我們聊聊好嗎？'],
+           g:['收到，謝謝您告訴我。','了解，我確認後再回覆您。'], s:['您好，想跟您聊聊孩子最近在學校的狀況。','謝謝您，有任何需要再跟我說。']};
+const qFor=k=>Q_T[k]||Q_T[parseKey(k).type];
+function tOpen(k){
+  const {type,seat,g}=parseKey(k); const s=stu(seat); S.t.ctx=k; S.t.read[k]=incoming(k);
+  $('#t-chat-av').innerHTML=type==='g'?'<div class="avatar sm '+s.av+'">'+s.c+'</div>':'<div class="kid-av" style="width:34px;height:34px">'+g+'</div>';
+  $('#t-chat-name').textContent=type==='g'?s.name+' · 家長群組':s.name+'的'+G[g];
+  $('#t-chat-sub').textContent='三年二班 '+seat+' 號 · '+(type==='g'?gNames(s):'個別對話');
+  const others=s.g.filter(x=>x!==g).map(x=>G[x]).join('、');
+  $('#t-chat-scope').className=type==='g'?'scope-bar':'scope-bar solo'; $('#t-chat-scope').style.marginTop='0';
+  $('#t-chat-scope span').textContent=type==='g'?'家長群組 · 發言'+gNames(s)+'都看得到':(others?'個別對話 · '+others+'看不到這裡的內容':'個別對話 · 只有您和'+G[g]+'看得到');
+  $('#t-input').placeholder=type==='g'?'訊息會送達'+gNames(s)+'…':'只有'+G[g]+'看得到…'; $('#t-input').value='';
+  $('#t-quick').innerHTML='<span class="ql">建議</span>'+qFor(k).map((q,i)=>'<button data-q="'+i+'">'+esc(q)+'</button>').join('');
+  renderThread($('#t-thread'),tItems(k),false,0);
+  tShow('t-chat');
+}
+$('#t-back-chat').addEventListener('click',()=>{ if(S.t.doneGroup&&!S.t.doneSolo&&!S.t.autoOpened){ S.t.autoOpened=true; S.t.open[5]=true; } tShow('t-home'); });
+$('#t-quick').addEventListener('click',e=>{ const b=e.target.closest('[data-q]'); if(!b)return; $('#t-input').value=qFor(S.t.ctx)[+b.dataset.q]; $('#t-input').focus(); tGuide(); });
+$('#t-input').addEventListener('input',tGuide);
+$('#t-input').addEventListener('keydown',e=>{ if(e.key==='Enter'&&!e.isComposing){e.preventDefault();tSend();} });
+$('#t-send').addEventListener('click',tSend);
+function tSend(){
+  const inp=$('#t-input'); const text=inp.value.trim(); const k=S.t.ctx;
+  if(!text){ inp.classList.remove('shake'); void inp.offsetWidth; inp.classList.add('shake'); inp.focus(); return; }
+  (S.t.msgs[k]=S.t.msgs[k]||[]).push({text,time:tTime()}); inp.value='';
+  renderThread($('#t-thread'),tItems(k),false,1); if((k==='g-5'&&!S.t.doneGroup)||(k==='s-5-爸'&&!S.t.doneSolo))completed(2);
+  if(k==='g-5'&&!S.t.doneGroup){ S.t.doneGroup=true; toast('已回覆家長群組','爸爸、媽媽都會收到。一個孩子的事，說一次就好。'); }
+  else if(k==='s-5-爸'&&!S.t.doneSolo){ S.t.doneSolo=true; toast('已回覆個別對話','只有爸爸看得到，媽媽的 App 不會出現這段。'); }
+  tGuide(); tCheck();
+}
+function tRenderCast(){
+  $('#t-cast-recent').innerHTML=S.t.casts.length?'<div class="sect">最近的群發</div>'+S.t.casts.map((c,i)=>'<button class="castcard" data-stat="'+i+'"><div class="ct">'+esc(c.text)+'</div><div class="cm">今天 '+c.time+' · 已讀 24 / 28</div></button>').reverse().join(''):'';
+}
+$('#t-cast-recent').addEventListener('click',e=>{ const b=e.target.closest('[data-stat]'); if(b)tStats(+b.dataset.stat,false); });
+$('#t-cast-send').addEventListener('click',()=>{
+  const ta=$('#t-cast-text'); const text=ta.value.trim(); if(!text){ ta.classList.remove('shake'); void ta.offsetWidth; ta.classList.add('shake'); ta.focus(); return; }
+  S.t.casts.push({text,time:tTime()}); const first=!S.t.doneCast; S.t.doneCast=true; if(first)completed(2);
+  toast('群發已送出','訊息會出現在每個家長群組裡。'); tStats(S.t.casts.length-1,true); if(first)tCheck();
+});
+function tStats(i,anim){
+  S.t.statIdx=i; const c=S.t.casts[i]; $('#t-stats-meta').textContent='今天 '+c.time+' 傳送 · 三年二班 28 位家長'; $('#t-stats-text').textContent=c.text;
+  const names=[['承','av1','3 號 · 李承翰的家長'],['晴','av2','15 號 · 劉子晴的家長'],['哲','av4','18 號 · 許哲瑜的家長'],['樂','av3','27 號 · 簡以樂的家長']];
+  $('#t-stat-unread').innerHTML=names.map(n=>'<span class="unread-chip"><i class="'+n[1]+'">'+n[0]+'</i>'+n[2]+'</span>').join('');
+  const rb=$('#t-remind'); rb.disabled=true; rb.textContent=c.reminded?'已提醒 ✓':'再次提醒 4 位未讀家長';
+  tShow('t-stats');
+  const set=n=>{ $('#t-stat-n').textContent=n; $('#t-stat-bar').style.width=Math.round(n/28*100)+'%'; $('#t-stat-cap').textContent='已讀 '+Math.round(n/28*100)+'%'; };
+  if(!anim){ set(24); rb.disabled=!!c.reminded; return; }
+  set(0); $('#t-stat-cap').textContent='送達中…'; S.t.counting=true; let n=0;
+  const tick=()=>{ n=Math.min(24,n+1+Math.floor(Math.random()*3)); set(n); if(n<24)timers.push(setTimeout(tick,260)); else { S.t.counting=false; rb.disabled=!!c.reminded; toast('已讀 24 / 28','還沒讀的 4 位，一鍵就能再提醒。'); tGuide(); tCheck(); } };
+  timers.push(setTimeout(tick,500));
+}
+$('#t-remind').addEventListener('click',()=>{ const c=S.t.casts[S.t.statIdx]; c.reminded=true; const rb=$('#t-remind'); rb.disabled=true; rb.textContent='已提醒 ✓'; toast('已再次提醒 4 位家長','不用一個一個私訊追問。'); });
+$('#t-back-stats').addEventListener('click',()=>tShow('t-home'));
+function tRenderDnd(){
+  $('#t-dnd-policy').innerHTML='<b>學校服務時間：平日 '+S.s.start+'–'+S.s.end+'</b>'+(S.s.weekend?'夜間、週末與國定假日':'夜間')+'為非服務時間。這是學校公告給家長的基準，'+(S.s.early?'您可以提早開始，但不能晚於 '+S.s.end+'。':'目前學校不開放老師自行調整。');
+  const days=['週一','週二','週三','週四','週五'];
+  $('#t-dnd-days').innerHTML=days.map((d,i)=>'<div class="dayrow"><div class="d">'+d+'<small>暫停推播，訊息照收</small></div><input type="time" data-day="'+i+'" value="'+(S.t.dnd[i]||S.s.end)+'"'+(S.s.early?'':' disabled')+' aria-label="'+d+'非服務時間開始"></div>').join('')+'<div class="dayrow"><div class="d">週末與國定假日<small>'+(S.s.weekend?'依學校政策全天暫停推播':'依平日時間')+'</small></div><span class="pill off">'+(S.s.weekend?'全天':'同平日')+'</span></div>';
+  $('#t-dnd-note').textContent='非服務時間內，家長仍可傳訊息，訊息照常送達、保留在收件匣，等您回到服務時間再處理。';
+}
+$('#t-dnd-days').addEventListener('change',e=>{ const i=e.target.dataset.day; if(i===undefined)return; const v=e.target.value; const days=['週一','週二','週三','週四','週五'];
+  if(!v||v>S.s.end){ e.target.value=S.t.dnd[i]||S.s.end; toast('不能晚於學校基準 '+S.s.end,'界線由學校守，老師可以提早，不能延後。','info'); return; }
+  S.t.dnd[i]=v; toast(days[i]+' '+v+' 起暫停推播','這天您可以比學校基準更早下班。'); });
+function tCheck(){ if(tDone().every(Boolean)&&!S.t.counting){ S.done[2]=true; showDone(2); tGuide(); } }
+function tAuto(d){ const scr=S.t.screen,k=S.t.ctx; if(scr==='t-chat'){ if(k==='g-5'&&!d[0])return 0; if(k==='s-5-爸'&&!d[1])return 1; } if(scr==='t-cast'&&!d[2])return 2; return d.indexOf(false); }
+function tRoute(i){
+  const scr=S.t.screen, k=S.t.ctx, has=$('#t-input').value.trim().length>0;
+  const back=scr==='t-chat'?'#t-back-chat':scr==='t-stats'?'#t-back-stats':'#t-nav-home';
+  if(i===0){ if(scr==='t-chat'&&k==='g-5') return has?{m:2,target:'#t-send',label:'送出'}:{m:1,target:'#t-input',label:'打一句回覆'};
+    if(scr==='t-home') return {m:0,target:'#t-row-5',label:'點陳宥廷'}; return {m:0,target:back,label:'先回訊息列表'}; }
+  if(i===1){ if(scr==='t-chat'&&k==='s-5-爸') return has?{m:3,target:'#t-send',label:'送出'}:{m:2,target:'#t-input',label:'打一句回覆'};
+    if(scr==='t-home') return S.t.open[5]?{m:1,target:'#t-kid-5-爸',label:'點爸爸'}:{m:0,target:'#t-chev-5',label:'展開'}; return {m:0,target:back,label:'先回訊息列表'}; }
+  if(scr==='t-cast') return {m:2,target:'#t-cast-send',label:'傳送'};
+  if(scr==='t-stats') return {m:3,target:null};
+  if(scr==='t-chat') return {m:0,target:'#t-back-chat',label:'先返回列表'};
+  return {m:0,target:'#t-nav-cast',label:'群發訊息'};
+}
+function tGuide(){ if($('#stage2').hidden)return; const d=tDone(); applyGuide(2,d,tAuto(d),tRoute); }
+
+/* =================== STAGE 3 學校 =================== */
+function sDone(){ return [S.s.policy,S.s.duty,S.s.log]; }
+function enterS(){ S.view[3]=null; $('#s-weekend').classList.toggle('on',S.s.weekend); $('#s-early').classList.toggle('on',S.s.early); $('#s-night').classList.toggle('on',S.s.night); $('#s-start').value=S.s.start; $('#s-end').value=S.s.end; $('#s-duty').value=S.s.role; $('#s-sec').value=String(S.s.sec); $('#s-ok-policy').hidden=!S.s.policy; $('#s-ok-duty').hidden=!S.s.duty; sPreview(); sTab(S.s.tab); $('#done-3').hidden=!S.done[3]; }
+function sPreview(){
+  const wk=$('#s-weekend').classList.contains('on'), early=$('#s-early').classList.contains('on'), night=$('#s-night').classList.contains('on');
+  $('#s-preview').textContent='目前為非服務時間（學校政策：平日 '+$('#s-end').value+' 起'+(wk?'，週末與國定假日全天':'')+'）。您的訊息已送達，老師將於服務時間回覆您。';
+  $('#s-early-note').textContent=early?'老師可以在自己的「服務時間」頁提早開始，但不能晚於 '+$('#s-end').value+'。':'所有老師一律依學校時間，不能自行調整。';
+  $('#s-duty-preview').textContent='導師 '+$('#s-sec').value+' 秒未接聽，自動轉接「'+DUTY[$('#s-duty').value]+'」。'+(night?'通話畫面會加註：如為人身安全或醫療緊急狀況，請優先撥打 119。':'（已關閉 119 提醒）');
+}
+['s-start','s-end','s-sec','s-duty'].forEach(id=>$('#'+id).addEventListener('change',()=>{ sPreview(); if(id==='s-start'||id==='s-end')$('#s-ok-policy').hidden=true; else $('#s-ok-duty').hidden=true; }));
+['s-weekend','s-early','s-night'].forEach(id=>$('#'+id).addEventListener('click',e=>{ const t=e.currentTarget; t.classList.toggle('on'); t.setAttribute('aria-checked',t.classList.contains('on')); sPreview(); $(id==='s-night'?'#s-ok-duty':'#s-ok-policy').hidden=true; }));
+['policy','duty','log'].forEach(k=>$('#s-tab-'+k).addEventListener('click',()=>sTab(k)));
+function sTab(t){ S.s.tab=t; ['policy','duty','log'].forEach(k=>{ $('#s-pane-'+k).hidden=k!==t; $('#s-tab-'+k).classList.toggle('active',k===t); }); if(t==='log'){ if(!S.s.log)completed(3); S.s.log=true; sRenderLog(); sCheck(); } sGuide(); }
+$('#s-save-policy').addEventListener('click',()=>{ completed(3); S.s.policy=true; S.s.start=$('#s-start').value; S.s.end=$('#s-end').value; S.s.weekend=$('#s-weekend').classList.contains('on'); S.s.early=$('#s-early').classList.contains('on'); S.t.dnd={}; $('#s-ok-policy').hidden=false; toast('服務時間已公告','家長端提示卡寫的是「學校政策」，不是老師的名字——老師不用當壞人。'); sGuide(); sCheck(); });
+$('#s-save-duty').addEventListener('click',()=>{ completed(3); S.s.duty=true; S.s.night=$('#s-night').classList.contains('on'); S.s.role=$('#s-duty').value; S.s.sec=+$('#s-sec').value; $('#s-ok-duty').hidden=false; toast('值班窗口已設定','導師 '+S.s.sec+' 秒未接聽，自動轉給「'+DUTY[S.s.role]+'」。'); sGuide(); sCheck(); });
+function logCard(c,isNew){
+  return '<div class="logcard'+(isNew?' new':'')+'"><div class="lc-top"><b>'+c.when+'</b>'+(isNew?'<span class="tag01">STEP 01</span>':'')+'<span class="tlpill">'+esc(c.res)+'</span></div>'+
+    '<div class="lc-row"><span>學生</span>'+esc(c.stu)+'</div><div class="lc-row"><span>撥給</span>林雅涵（導師）</div><div class="lc-row"><span>接通</span>'+(isNew?'<b>'+esc(c.who)+'</b>':esc(c.who))+'</div></div>';
+}
+function sRenderLog(){
+  const rows=S.p.calls.slice().reverse().map(c=>logCard({when:'115/10/27 '+c.time,res:c.sec+' 秒未接 · 已轉接',stu:'三年二班 5 號 陳宥廷',who:c.who},true)).join('');
+  const hist=logCard({when:'115/10/19 16:40',res:'導師接聽',stu:'三年二班 24 號 蔡沛璇',who:'林雅涵'},false);
+  $('#s-log-body').innerHTML=rows+hist;
+  $('#s-log-foot').innerHTML=S.p.calls.length?'<div class="actions"><span class="okline">✓ 標著 STEP 01 的，就是剛才家長撥的那一通</span></div>':'<div class="actions"><span style="font-size:13px;color:var(--muted)">還沒看到 STEP 01 的通話——家長那段還沒試撥。</span><button class="btn sm" id="s-goto1" data-go="1">回到 STEP 01 試撥 →</button></div>';
+}
+function sCheck(){ if(sDone().every(Boolean)&&!S.done[3]){ S.done[3]=true; showDone(3); toast('三個身分都體驗完了','家長找得到人、老師守得住界線、學校訂得了規則。'); } sGuide(); }
+function sAuto(d){ const t=S.s.tab; if(t==='policy'&&!d[0])return 0; if(t==='duty'&&!d[1])return 1; return d.indexOf(false); }
+function sRoute(i){ const t=S.s.tab;
+  if(i===0) return t!=='policy'?{m:0,target:'#s-tab-policy',label:'切到這裡'}:{m:2,target:'#s-save-policy',label:'儲存並公告'};
+  if(i===1) return t!=='duty'?{m:0,target:'#s-tab-duty',label:'切到這裡'}:{m:2,target:'#s-save-duty',label:'儲存'};
+  return t!=='log'?{m:0,target:'#s-tab-log',label:'看紀錄'}:{m:1,target:null};
+}
+function sGuide(){ if($('#stage3').hidden)return; const d=sDone(); applyGuide(3,d,sAuto(d),sRoute); }
+
+renderHome();
+</script>
+</body>
+</html>
